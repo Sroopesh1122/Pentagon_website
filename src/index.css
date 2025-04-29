@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+@font-face {
+    font-family: 'Mansfield';
+    src: url('./assets/font/Mansfield-iF66c703e50e674.ttf') format('truetype');
+}
+@import "tailwindcss";
+
+
+*{
+  outline: none;
+}
+
+body{
+   font-family: "Mansfield"; 
+}
+
+.font-archivo {
+  font-family: "Archivo Black", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .inner-rotate {
+    animation: spin 15s linear infinite;
+  }
+  
+
+
+  @keyframes spin-reverse {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
+  
+  .animate-spin-reverse {
+    animation: spin-reverse 15s linear infinite;
+  }
+
+  /* Outer and Inner Circle Base Styles */
+.orbit {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed gray;
+}
+
+.orbit-outer {
+  width: 380px;
+  height: 380px;
+  animation: rotateOuter 20s linear infinite;
+}
+
+.orbit-inner {
+  width: 250px;
+  height: 250px;
+  animation: rotateInner 20s linear infinite;
+}
+
+/* Rotation Keyframes */
+@keyframes rotateOuter {
+  0% { rotate: 0deg; }
+  100% { rotate: 360deg; }
+}
+
+@keyframes rotateInner {
+  0% { rotate: 0deg; }
+  100% { rotate: 360deg; }
+}
+
+/* Container for text items */
+.orbit-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Item placement on the orbit */
+.orbit-item {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  transform: rotate(var(--angle)) translateX(50%) translateY(-150px);
+}
+
+.orbit-inner .orbit-item {
+  transform: rotate(var(--angle)) translateX(50%) translateY(-100px);
+}
+
+/* Text itself — counter-rotating to stay upright */
+.orbit-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: max-content;
+  height: 100%;
+  transform: rotate(calc(-1 * var(--angle)));
+}
+
+.orbit-outer .orbit-text {
+  animation: rotateTextOuter 20s linear infinite;
+}
+
+.orbit-inner .orbit-text {
+  animation: rotateTextInner 20s linear infinite;
+}
+
+/* Counter-rotate for upright text */
+@keyframes rotateTextOuter {
+  0% { rotate: 0deg; }
+  100% { rotate: -360deg; }
+}
+
+@keyframes rotateTextInner {
+  0% { rotate: 0deg; }
+  100% { rotate: -360deg; }
+}
+
+.orbit:hover,
+.orbit:hover .orbit-text {
+  animation-play-state: paused;
+}
+
+
+.text-shadow{
+  text-shadow: 1px 1px 0 #000, 2px 2px 5px rgba(0,0,0,0.5);
+}
+
+
+
+@media (max-width: 640px) {
+  .orbit-outer {
+    width: 280px;
+    height: 280px;
+  }
+
+  .orbit-inner {
+    width: 200px;
+    height: 200px;
+  }
+
+  .orbit-item {
+    transform: rotate(var(--angle)) translateX(50%) translateY(-110px);
+  }
+
+  .orbit-inner .orbit-item {
+    transform: rotate(var(--angle)) translateX(50%) translateY(-80px);
+  }
+
+  .orbit-text {
+    font-size: 1.35rem; /* text-lg */
+  }
+  
+}
+
+.img-reflect{
+  -webkit-box-reflect: below 0px linear-gradient(transparent,transparent, rgba(0,0,0,0.2));
+}
