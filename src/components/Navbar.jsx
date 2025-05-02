@@ -36,10 +36,10 @@ const Navbar = () => {
        <article className='hidden md:flex justify-center items-center gap-5 uppercase font-[500] text-[0.9rem]'>
 
          {
-            menuItems.map((item,idx)=> <Link  key={item.key} to={item.path}>{item.label}</Link> )
+            menuItems.map((item,idx)=> <Link className='underline-nav' key={item.key} to={item.path}>{item.label}</Link> )
          }
 
-         <button>DOWNLOAD APP</button>
+         <button >DOWNLOAD APP</button>
 
          <button>LOGIN</button>
 

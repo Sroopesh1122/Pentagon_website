@@ -11,10 +11,16 @@ import testingImg from "../assets/imgs/TESTING.png";
 import corporateBuilding from "../assets/imgs/CORPORATE_BUILDING.png";
 import spaceVedio from "../assets/vedio/spacevedio.mp4"
 import VedioPlayer from "../components/VedioPlayer";
+import Testimonial from "../components/Testimonial";
+import Testimonial1 from "../components/Testimonial1";
+import Footer from "../components/Footer";
+import InfoSection1 from "../components/InfoSection1";
+import HiringPartners from "../components/HiringPartners";
 
 
 
 const Home = () => {
+
   const TEXT = [
     { label: "CODE", path: "/code" },
     { label: "BREATH", path: "/breath" },
@@ -49,8 +55,6 @@ const Home = () => {
     },
   ];
 
-
-
   const COURSE_HERO_1 = "Get the code to travel smart and safe";
   const COURSE_HERO_2 = "to reach your first tech mountain"
 
@@ -70,29 +74,13 @@ const Home = () => {
 
   return (
     <>
-      <section className="w-full min-h-[60vh]">
-        <article className="flex w-full justify-center items-center pt-[30px]">
-          <button
-            onClick={() => setPromoOpen(true)}
-            className="px-[30px] flex gap-[1px] justify-center items-center cursor-pointer rounded-sm py-1   text-2xl"
-          >
-            <div className="border border-black font-extrabold px-2 py-1">
-              EXPLORE
-            </div>
-            <div className="w-[43px] h-[43px] bg-black flex justify-center -rotate-90 items-center">
-              <img
-                src={triangle}
-                className="w-[25px] h-[25px] rotate-0"
-                alt=""
-              />
-            </div>
-          </button>
-        </article>
+      <section id="hero-section" className="w-full">
+        
 
-        <article className="w-full  min-h-[50vh] flex justify-center items-center">
-          <div className="relative w-[400px] h-[400px] flex justify-center items-center">
+        <article className="w-full relative   flex justify-center items-center">
+          <div className="relative w-[400px] h-[400px] flex justify-center items-center  code-orbit ">
             {/* Outer Circle: Top and Bottom */}
-            <div className="orbit orbit-outer">
+            <div className="orbit orbit-outer code-outer-orbit">
               <div className="orbit-content">
                 {TEXT.slice(0, 2).map((text, i) => (
                   <div
@@ -117,7 +105,7 @@ const Home = () => {
             </div>
 
             {/* Inner Circle: Left and Right */}
-            <div className="orbit orbit-inner">
+            <div className="orbit orbit-inner code-inner-orbit">
               <div className="orbit-content">
                 {TEXT.slice(2, 4).map((text, i) => (
                   <div
@@ -147,28 +135,45 @@ const Home = () => {
               alt="Central"
             />
           </div>
+          
+        <button
+          onClick={() => setPromoOpen(true)}
+          className="px-[30px] into-btn absolute bottom-[30px] right-[5%]  md:right-[10%] lg:right-[25%] flex gap-[1px] justify-center items-center cursor-pointer rounded-sm py-1 text-2xl"
+          >
+            
+            <div className="w-[60px] h-[60px] md:w-[80px] md:h-[80px] bg-black rounded-full flex justify-center -rotate-90 items-center pulse">
+              <span style={{'--i':1}}></span>
+              <img
+                src={triangle}
+                className="w-[15px] h-[15px] rotate-0 "
+                alt=""
+              />
+            </div>
+          </button>
+     
+
         </article>
 
         <article className=" w-full md:mt-[20px]">
           <div className="w-full font-[500] flex justify-center items-center flex-col uppercase text-[1.2rem] md:text-[2rem]">
-            <span className="text-[1rem] md:text-[2rem] font-extrabold">
+            <span className="text-[1rem] md:text-[2rem] font-extrabold hero-info-1">
               BREATH WITH CODE DEEP WITH
             </span>
           </div>
         </article>
 
-        <article className="w-full relative h-[30vh] md:h-[35vh] md:mt-[20px]">
+        <article className="w-full relative h-[30vh] md:h-[300px] md:mt-[20px] ">
           {/* Moon lading img    */}
-          <img src={moonfloor} className="w-full h-full img-reflect" alt="" />
+          <img src={moonfloor} className="w-full h-full img-reflect moon-land" alt="" />
 
           {/* Astronut img */}
           <img
             src={astronut}
-            className="absolute left-[50%] bottom-8 w-[250px] h-[150px] md:w-[280px] md:h-[180px] lg:w-[320px] lg:h-[200px] z-10 -translate-x-[50%]"
+            className="absolute left-[50%] bottom-8 w-[250px] h-[150px] md:w-[280px] md:h-[180px] lg:w-[320px] lg:h-[200px] z-10 -translate-x-[50%] moon-astronout"
             alt=""
           />
 
-          <span className="absolute font-archivo font-[300]  text-red-500 top-4 md:top-0 w-full text-center text-[2.5rem] md:text-[4rem] lg:text-[5.5rem] duration-300 hover:tracking-tighter">
+          <span className="absolute font-archivo font-[300]  text-red-500 top-4 md:top-0 w-full text-center text-[2.5rem] md:text-[4rem] lg:text-[5.5rem] duration-300 hover:tracking-tighter pentagon-text">
             PENTAGON SPACE
           </span>
         </article>
@@ -178,7 +183,7 @@ const Home = () => {
 
        {/* Courses Section */}
 
-      <section className="w-full mt-[50px] md:mt-[120px] min-h-[60vh]">
+      <section className="w-full mt-[50px] md:mt-[120px] ">
         <article className="flex w-full justify-center items-center pt-[30px]">
           <button className="px-[30px] flex gap-[1px] justify-center items-center cursor-pointer rounded-sm py-1   text-2xl">
             <div className="border border-black font-extrabold px-2 py-1">
@@ -284,19 +289,25 @@ const Home = () => {
           {/* Moon landing img */}
           <img
             src={corporateBuilding}
-            className="w-full h-full"
+            className="w-full h-full "
             alt=""
           />
         </article>
 
 
-         {/* <div className="w-full h-[30vh]"></div> */}
-
+        
       </section>
 
-        
 
+       <Testimonial/>
 
+       {/* <Testimonial1/> */}
+
+       <InfoSection1/>
+
+        <HiringPartners/>
+       
+       <Footer/>
 
       <AnimatePresence mode="wait">
         {openPromo && (
@@ -304,7 +315,7 @@ const Home = () => {
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
-            className="fixed top-0 left-0 bg-black/60 w-full z-[999] h-[100vh]"
+            className="fixed top-0 left-0 bg-black w-full z-[999] h-[100vh]"
             onClick={handlePromoClose}
           >
             <VedioPlayer url={spaceVedio}/>
@@ -317,6 +328,3 @@ const Home = () => {
 
 export default Home;
 
-const PromoSection = ({ onClose }) => {
-  return;
-};

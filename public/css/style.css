@@ -1,0 +1,192 @@
+@import url('swiper.min.css');
+
+:root {
+	
+	/* #ba024a in decimal RGB */
+	--main-color: rgb(186,2,74);
+	--main-color-rgb:186,2,74;
+	
+	/* #540045 in decimal RGB */
+	--color-two: rgb(84,0,69);
+	--color-two-rgb:84,0,69;
+	
+	/* #120c12 in decimal RGB */
+	--color-three: rgb(18,12,18);
+	--color-three-rgb:18,12,18;
+	
+	/* #0f0f0f in decimal RGB */
+	--color-four: rgb(15,15,15);
+	--color-four-rgb:15,15,15;
+	
+
+
+
+    /* #ffffff in decimal RGB */
+	--white-color:rgb(255,255,255);
+	--white-color-rgb:255,255,255;
+
+	/* #000000 in decimal RGB */
+	--black-color:rgb(0,0,0);
+	--black-color-rgb:0,0,0;
+
+}
+
+
+
+
+.testimonial-one{
+	position:relative;
+	padding:100px 0px 70px;
+	/* color: black; */
+}
+
+.testimonial-one.style-two{
+	padding-top:0px;
+	background:none;
+}
+
+.testimonial-block_one{
+	position:relative;
+	margin-bottom:30px;
+}
+
+.testimonial-block_one-inner{
+	position:relative;
+}
+
+.testimonial-block_one-content{
+	position:relative;
+	padding:25px 25px;
+	-webkit-transition:all 500ms ease;
+	-moz-transition:all 500ms ease;
+	-ms-transition:all 500ms ease;
+	-o-transition:all 500ms ease;
+	transition:all 500ms ease;
+	border: 1px solid transparent;
+	min-height: 200px;
+	box-shadow: rgba(14, 63, 126, 0.04) 0px 0px 0px 1px, rgba(42, 51, 69, 0.04) 0px 1px 1px -0.5px, rgba(42, 51, 70, 0.04) 0px 3px 3px -1.5px, rgba(42, 51, 70, 0.04) 0px 6px 6px -3px, rgba(14, 63, 126, 0.04) 0px 12px 12px -6px, rgba(14, 63, 126, 0.04) 0px 24px 24px -12px;
+}
+
+.testimonial-block_one-content:before{
+	position:absolute;
+	content:'';
+	left:0px;
+	top:0px;
+	right:0px;
+	bottom:0px;
+	opacity:0;
+	background-color:black;
+	
+	-webkit-transition: all 900ms ease;
+    -ms-transition: all 900ms ease;
+    -o-transition: all 900ms ease;
+    transition: all 900ms ease;
+    -webkit-transform: perspective(400px) rotateX(-90deg);
+    -moz-transform: perspective(400px) rotateX(-90deg);
+    -ms-transform: perspective(400px) rotateX(-90deg);
+    -o-transform: perspective(400px) rotateX(-90deg);
+    transform: perspective(400px) rotateX(-90deg);
+    -webkit-transform-origin: top;
+    -moz-transform-origin: top;
+    -ms-transform-origin: top;
+    -o-transform-origin: top;
+    transform-origin: top;
+    -ms-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+	z-index: -10;
+}
+
+.testimonial-block_one-inner:hover .testimonial-block_one-content:before{
+	opacity:1;
+	-webkit-transform: perspective(400px) rotateX(0deg);
+    -moz-transform: perspective(400px) rotateX(0deg);
+    -ms-transform: perspective(400px) rotateX(0deg);
+    -o-transform: perspective(400px) rotateX(0deg);
+    transform: perspective(400px) rotateX(0deg);
+}
+
+.testimonial-block_one-inner:hover .testimonial-block_one-content{
+
+	color: white;
+}
+
+
+.testimonial-block_one-inner:hover  p{
+	z-index: 999;
+	color: green;
+}
+
+.testimonial-block_one-designation{
+	position:relative;
+	font-weight:400;
+	font-size:15px;
+	margin-top:5px;
+	opacity:0.30;
+	color:black;
+	-webkit-transition:all 500ms ease;
+	-moz-transition:all 500ms ease;
+	-ms-transition:all 500ms ease;
+	-o-transition:all 500ms ease;
+	transition:all 500ms ease;
+}
+
+.testimonial-block_one-number{
+	position:relative;
+	font-weight:700;
+	font-size:40px;
+	margin-top:30px;
+	opacity:0.10;
+	text-align:right;
+	color:black;
+	-webkit-transition:all 500ms ease;
+	-moz-transition:all 500ms ease;
+	-ms-transition:all 500ms ease;
+	-o-transition:all 500ms ease;
+	transition:all 500ms ease;
+}
+
+.testimonial-block_one-inner:hover .testimonial-block_one-number{
+	opacity:1;
+	color:var(--color-four);
+}
+
+.testimonial-block_one-lower{
+	position:relative;
+	margin-top:25px;
+	font-size:14px;
+	line-height:28px;
+	color:black;
+}
+
+.testimonial-block_one-lower .quote_icon{
+	position:absolute;
+	left:0px;
+	top:6px;
+	line-height:1em;
+}
+
+
+
+
+.underline-nav{
+	position: relative;
+}
+
+.underline-nav::before{
+	content: '';
+	position: absolute;
+	bottom: -5px;
+	background-color:  red;
+	width: 0%;
+	height: 3px;
+	border-radius: 10px;
+	transition: all .5s;
+}
+
+.underline-nav:hover::before{
+	width: 100%;
+}
+
