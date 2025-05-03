@@ -55,9 +55,9 @@ const InfoSection1 = () => {
           <span className="max-sm:text-[0.8rem] text-[1.8rem] text-red-500 font-extrabold">300+</span>
         </div>
         <div className="blink-cursor
-                        max-sm:top-[65%] max-sm:left-[6%] h-2
+                        max-sm:top-[65%] max-sm:left-[6%] sm:h-2
                         sm:top-[65%] sm:left-[11%] h-3
-                        md:top-[65%] md:left-[11%] h-5
+                        md:top-[65%] md:left-[11%] md:h-5
                         xl:top-[65%] xl:left-[14%]
                         "></div>
 
