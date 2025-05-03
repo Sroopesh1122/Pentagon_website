@@ -305,7 +305,7 @@ const Home = () => {
 
        <InfoSection1/>
 
-        <HiringPartners/>
+       <HiringPartners/>
        
        <Footer/>
 
