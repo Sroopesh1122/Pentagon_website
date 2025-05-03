@@ -1,8 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap");
+
 @font-face {
   font-family: "Mansfield";
   src: url("./assets/font/Mansfield-iF66c703e50e674.ttf") format("truetype");
 }
+
 @import "tailwindcss";
 
 * {
@@ -32,6 +34,7 @@ body {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -45,6 +48,7 @@ body {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(-360deg);
   }
@@ -78,6 +82,7 @@ body {
   0% {
     rotate: 0deg;
   }
+
   100% {
     rotate: 360deg;
   }
@@ -87,6 +92,7 @@ body {
   0% {
     rotate: 0deg;
   }
+
   100% {
     rotate: 360deg;
   }
@@ -137,6 +143,7 @@ body {
   0% {
     rotate: 0deg;
   }
+
   100% {
     rotate: -360deg;
   }
@@ -146,6 +153,7 @@ body {
   0% {
     rotate: 0deg;
   }
+
   100% {
     rotate: -360deg;
   }
@@ -180,22 +188,20 @@ body {
   }
 
   .orbit-text {
-    font-size: 1.35rem; /* text-lg */
+    font-size: 1.35rem;
+    /* text-lg */
   }
 }
 
 .img-reflect {
-  -webkit-box-reflect: below 0px linear-gradient(transparent, transparent,transparent, rgba(0, 0, 0, 0.9));
+  -webkit-box-reflect: below 0px linear-gradient(transparent, transparent, transparent, rgba(0, 0, 0, 0.9));
 }
 
 .img-reflect1 {
-  -webkit-box-reflect: below 0px
-    linear-gradient(
-      transparent,
+  -webkit-box-reflect: below 0px linear-gradient(transparent,
       transparent,
       rgba(0, 0, 0, 0.4),
-      rgba(0, 0, 0, 1)
-    );
+      rgba(0, 0, 0, 1));
 }
 
 .triangle {
@@ -232,9 +238,11 @@ body {
     height: 80px;
     opacity: 1;
   }
+
   50% {
     opacity: 0.7;
   }
+
   100% {
     width: 100px;
     height: 100px;
@@ -249,9 +257,11 @@ body {
       height: 50px;
       opacity: 1;
     }
+
     50% {
       opacity: 1;
     }
+
     100% {
       width: 80px;
       height: 80px;
@@ -298,7 +308,7 @@ body {
   height: 280px;
 }
 
-.text-from-anywhere{
+.text-from-anywhere {
   position: absolute;
   bottom: 220px;
   left: 50%;
@@ -310,10 +320,10 @@ body {
 
 
 
-.corporate-info1{
+.corporate-info1 {
   position: absolute;
-  bottom: 150px;
-  left: 240px;
+  top: 40%;
+  left: 12%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -321,10 +331,10 @@ body {
 }
 
 /* absolute top-[150px] left-[420px] flex justify-center items-center flex-col */
-.corporate-info2{
+.corporate-info2 {
   position: absolute;
-  top: 150px;
-  left: 420px;
+  top: 10%;
+  left: 21%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -332,28 +342,50 @@ body {
 }
 
 /* absolute top-[400px] left-[520px] flex justify-center items-center flex-col */
-.corporate-info3{
+.corporate-info3 {
   position: absolute;
-  top: 400px;
-  left: 520px;
+  top: 50%;
+  left: 30%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
+
 /* absolute top-[300px] left-[680px] flex justify-center items-center flex-col */
-.corporate-info4{
+.corporate-info4 {
   position: absolute;
-  top: 300px;
-  left: 680px;
+  top: 40%;
+  left: 45%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
+@keyframes blink {
 
+  0%,
+  100% {
+    opacity: 1;
+  }
 
+  50% {
+    opacity: 0;
+  }
+}
+
+.blink-cursor {
+  width: 3px;
+  background-color: black;
+  animation: blink 1s step-start infinite;
+  position: absolute;
+  z-index: 50;
+}
+
+/* @media screen and (min-width: 1025){
+  
+} */
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   .person1 {
     position: absolute;
@@ -363,7 +395,7 @@ body {
     width: 150px;
     height: 80px;
   }
-  
+
   .person2 {
     position: absolute;
     bottom: 120px;
@@ -372,7 +404,7 @@ body {
     width: 80px;
     height: 130px;
   }
-  
+
   .person3 {
     position: absolute;
     top: 150px;
@@ -381,7 +413,7 @@ body {
     width: 80px;
     height: 110px;
   }
-  
+
   .person4 {
     position: absolute;
     top: 10px;
@@ -391,7 +423,7 @@ body {
     height: 180px;
   }
 
-  .text-from-anywhere{
+  .text-from-anywhere {
     position: absolute;
     bottom: 150px;
     left: 50%;
@@ -400,43 +432,44 @@ body {
     color: white;
     letter-spacing: 15px;
   }
-  
-  .corporate-info1{
+
+  .corporate-info1 {
     position: absolute;
-    bottom: 150px;
-    left: 20px;
+    top: 40%;
+    left: 8%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
   }
-  
+
   /* absolute top-[150px] left-[420px] flex justify-center items-center flex-col */
-  .corporate-info2{
+  .corporate-info2 {
     position: absolute;
-    top: 80px;
-    left: 150px;
+    top: 18%;
+    left: 19%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
   }
-  
+
   /* absolute top-[400px] left-[520px] flex justify-center items-center flex-col */
-  .corporate-info3{
+  .corporate-info3 {
     position: absolute;
-    top: 150px;
-    left: 225px;
+    top: 50%;
+    left: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
   }
+
   /* absolute top-[300px] left-[680px] flex justify-center items-center flex-col */
-  .corporate-info4{
+  .corporate-info4 {
     position: absolute;
-    top: 130px;
-    left: 320px;
+    top: 42%;
+    left: 45%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -457,7 +490,7 @@ body {
     width: 80px;
     height: 50px;
   }
-  
+
   .person2 {
     position: absolute;
     bottom: 100px;
@@ -466,7 +499,7 @@ body {
     width: 60px;
     height: 100px;
   }
-  
+
   .person3 {
     position: absolute;
     top: 120px;
@@ -475,7 +508,7 @@ body {
     width: 50px;
     height: 70px;
   }
-  
+
   .person4 {
     position: absolute;
     top: 10px;
@@ -485,7 +518,7 @@ body {
     height: 140px;
   }
 
-  .text-from-anywhere{
+  .text-from-anywhere {
     position: absolute;
     bottom: 100px;
     left: 20%;
@@ -495,45 +528,46 @@ body {
     letter-spacing: 9px;
   }
 
-  .corporate-info1{
+  .corporate-info1 {
     position: absolute;
-    bottom: 20px;
-    left: 5px;
+    top: 40%;
+    left: 2%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     transform: scale(0.7);
   }
-  
+
   /* absolute top-[150px] left-[420px] flex justify-center items-center flex-col */
-  .corporate-info2{
+  .corporate-info2 {
     position: absolute;
-    top: 40px;
-    left: 60px;
+    top: 22%;
+    left: 14%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     transform: scale(0.7);
   }
-  
+
   /* absolute top-[400px] left-[520px] flex justify-center items-center flex-col */
-  .corporate-info3{
+  .corporate-info3 {
     position: absolute;
-    top: 130px;
-    left: 115px;
+    top: 50%;
+    left: 25%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     transform: scale(0.7);
   }
+
   /* absolute top-[300px] left-[680px] flex justify-center items-center flex-col */
-  .corporate-info4{
+  .corporate-info4 {
     position: absolute;
-    top: 90px;
-    left: 190px;
+    top: 42%;
+    left: 45%;
     display: flex;
     justify-content: center;
     align-items: center;
