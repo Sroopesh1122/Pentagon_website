@@ -271,66 +271,10 @@ body {
 }
 
 /* For Footer Section */
-
-<<<<<<< HEAD
-.person1 {
-  position: absolute;
-  top: 270px;
-  left: 480px;
-  transform: translate(-50%, 0%);
-  width: 150px;
-  height: 80px;
-}
-
-.person2 {
-  position: absolute;
-  bottom: 170px;
-  left: 80px;
-  transform: translate(0%, 0%);
-  width: 120px;
-  height: 150px;
-}
-
-.person3 {
-  position: absolute;
-  top: 170px;
-  right: 80px;
-  transform: translate(0%, 0%);
-  width: 120px;
-  height: 150px;
-}
-
-.person4 {
-  position: absolute;
-  top: 10px;
-  left: 55%;
-  transform: translate(-50%, 0%);
-  width: 480px;
-  height: 280px;
-}
-
-.text-from-anywhere {
-  position: absolute;
-  bottom: 220px;
-  left: 50%;
-  transform: translate(-50%, 0%);
-  font-size: 23px;
-  color: white;
-  letter-spacing: 30px;
-}
-
-
-
-.corporate-info1 {
-  position: absolute;
-  top: 40%;
-  left: 12%;
-=======
 .corporate-info1{
   position: absolute;
   bottom: 150px;
   left: 80px;
->>>>>>> 7f3e90f5f355e4545748c814715e2c93e9af94a2
   display: flex;
   justify-content: center;
   align-items: center;
@@ -340,13 +284,9 @@ body {
 /* absolute top-[150px] left-[420px] flex justify-center items-center flex-col */
 .corporate-info2 {
   position: absolute;
-<<<<<<< HEAD
-  top: 10%;
-  left: 21%;
-=======
+
   top: 130px;
   left: 250px;
->>>>>>> 7f3e90f5f355e4545748c814715e2c93e9af94a2
   display: flex;
   justify-content: center;
   align-items: center;
@@ -356,13 +296,9 @@ body {
 /* absolute top-[400px] left-[520px] flex justify-center items-center flex-col */
 .corporate-info3 {
   position: absolute;
-<<<<<<< HEAD
-  top: 50%;
-  left: 30%;
-=======
+
   top: 350px;
   left: 350px;
->>>>>>> 7f3e90f5f355e4545748c814715e2c93e9af94a2
   display: flex;
   justify-content: center;
   align-items: center;
@@ -372,13 +308,9 @@ body {
 /* absolute top-[300px] left-[680px] flex justify-center items-center flex-col */
 .corporate-info4 {
   position: absolute;
-<<<<<<< HEAD
-  top: 40%;
-  left: 45%;
-=======
+
   top: 200px;
   left: 510px;
->>>>>>> 7f3e90f5f355e4545748c814715e2c93e9af94a2
   display: flex;
   justify-content: center;
   align-items: center;
@@ -409,64 +341,12 @@ body {
   
 } */
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-<<<<<<< HEAD
-  .person1 {
-    position: absolute;
-    top: 170px;
-    left: 250px;
-    transform: translate(-50%, 0%);
-    width: 150px;
-    height: 80px;
-  }
 
-  .person2 {
-    position: absolute;
-    bottom: 120px;
-    left: 40px;
-    transform: translate(0%, 0%);
-    width: 80px;
-    height: 130px;
-  }
-
-  .person3 {
-    position: absolute;
-    top: 150px;
-    right: 40px;
-    transform: translate(0%, 0%);
-    width: 80px;
-    height: 110px;
-  }
-
-  .person4 {
-    position: absolute;
-    top: 10px;
-    left: 55%;
-    transform: translate(-50%, 0%);
-    width: 320px;
-    height: 180px;
-  }
-
-  .text-from-anywhere {
-    position: absolute;
-    bottom: 150px;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    font-size: 15px;
-    color: white;
-    letter-spacing: 15px;
-  }
-
-  .corporate-info1 {
-    position: absolute;
-    top: 40%;
-    left: 8%;
-=======
   
   .corporate-info1{
     position: absolute;
     bottom: 140px;
     left: 40px;
->>>>>>> 7f3e90f5f355e4545748c814715e2c93e9af94a2
     display: flex;
     justify-content: center;
     align-items: center;
