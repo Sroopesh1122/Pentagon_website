@@ -272,6 +272,7 @@ body {
 
 /* For Footer Section */
 
+<<<<<<< HEAD
 .person1 {
   position: absolute;
   top: 270px;
@@ -324,6 +325,12 @@ body {
   position: absolute;
   top: 40%;
   left: 12%;
+=======
+.corporate-info1{
+  position: absolute;
+  bottom: 150px;
+  left: 80px;
+>>>>>>> 7f3e90f5f355e4545748c814715e2c93e9af94a2
   display: flex;
   justify-content: center;
   align-items: center;
@@ -333,8 +340,13 @@ body {
 /* absolute top-[150px] left-[420px] flex justify-center items-center flex-col */
 .corporate-info2 {
   position: absolute;
+<<<<<<< HEAD
   top: 10%;
   left: 21%;
+=======
+  top: 130px;
+  left: 250px;
+>>>>>>> 7f3e90f5f355e4545748c814715e2c93e9af94a2
   display: flex;
   justify-content: center;
   align-items: center;
@@ -344,8 +356,13 @@ body {
 /* absolute top-[400px] left-[520px] flex justify-center items-center flex-col */
 .corporate-info3 {
   position: absolute;
+<<<<<<< HEAD
   top: 50%;
   left: 30%;
+=======
+  top: 350px;
+  left: 350px;
+>>>>>>> 7f3e90f5f355e4545748c814715e2c93e9af94a2
   display: flex;
   justify-content: center;
   align-items: center;
@@ -355,8 +372,13 @@ body {
 /* absolute top-[300px] left-[680px] flex justify-center items-center flex-col */
 .corporate-info4 {
   position: absolute;
+<<<<<<< HEAD
   top: 40%;
   left: 45%;
+=======
+  top: 200px;
+  left: 510px;
+>>>>>>> 7f3e90f5f355e4545748c814715e2c93e9af94a2
   display: flex;
   justify-content: center;
   align-items: center;
@@ -387,6 +409,7 @@ body {
   
 } */
 @media screen and (min-width: 768px) and (max-width: 1024px) {
+<<<<<<< HEAD
   .person1 {
     position: absolute;
     top: 170px;
@@ -437,6 +460,13 @@ body {
     position: absolute;
     top: 40%;
     left: 8%;
+=======
+  
+  .corporate-info1{
+    position: absolute;
+    bottom: 140px;
+    left: 40px;
+>>>>>>> 7f3e90f5f355e4545748c814715e2c93e9af94a2
     display: flex;
     justify-content: center;
     align-items: center;
@@ -533,10 +563,10 @@ body {
     top: 40%;
     left: 2%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    justify-content: center;    
     transform: scale(0.7);
+    align-items: flex-start; 
+  justify-content: flex-start; 
   }
 
   /* absolute top-[150px] left-[420px] flex justify-center items-center flex-col */
@@ -545,8 +575,8 @@ body {
     top: 22%;
     left: 14%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    align-items: flex-start; 
+  justify-content: flex-start;
     flex-direction: column;
     transform: scale(0.7);
   }
@@ -557,9 +587,9 @@ body {
     top: 50%;
     left: 25%;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    align-items: flex-start; 
+    justify-content: flex-start;
     transform: scale(0.7);
   }
 
@@ -569,10 +599,9 @@ body {
     top: 42%;
     left: 45%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    align-items: flex-start; 
+  justify-content: flex-start;
     flex-direction: column;
-    transform: scale(0.7);
+    transform: scale(0.7)
   }
-
 }
