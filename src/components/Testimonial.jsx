@@ -7,6 +7,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 import ReactPlayer from "react-player";
+import { IoClose } from "react-icons/io5";
 
 import AkashImg from "../assets/imgs/testimonials/Akash Pandith.png";
 import AkashataImg from "../assets/imgs/testimonials/Akshata Garagad.png";
@@ -119,11 +120,11 @@ const Testimonial = () => {
               }}
               className="absolute top-0 left-[50%] -translate-x-[50%] w-[95%] md:w-[500px] mx-auto  z-[10]  h-[400px] bg-black/90 rounded-2xl"
             >
-              <div className="w-full h-[500px] rounded-2xl relative">
-                <span className="text-[0.9rem] text-white absolute right-2 top-2">
-                  X
-                </span>
-
+              <div className="w-full h-[400px] bg-red-600 rounded-2xl relative">
+                
+                 
+                <span className="text-[1.3rem] text-white absolute right-2 top-2 cursor-pointer z-[10]">Close</span>
+               
                 <ReactPlayer
                   controls={false}
                   url={selectedVedio}

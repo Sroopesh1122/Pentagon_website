@@ -85,7 +85,6 @@ const AppWrapper = () => {
       <FollowCursor />
       <Navbar />
       <Outlet />
-      <div className="w-full h-[20vh]"></div>
     </section>
   );
 };
