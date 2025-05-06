@@ -305,7 +305,7 @@ const Home = () => {
        {/* <Testimonial1/> */}
 
 
-       <TeamMembers/>
+       {/* <TeamMembers/> */}
 
        <InfoSection1/>
 
