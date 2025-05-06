@@ -6,93 +6,106 @@ import person3 from "../assets/imgs/Layer6.png";
 import person4 from "../assets/imgs/Layer7.png";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import appleIcon from "../assets/imgs/mac-os.png"
-import "./FooterStyles.css";
+import appleIcon from "../assets/imgs/mac-os.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Footer = () => {
-
   useEffect(() => {
-   
     const baseAnimation = {
       scrollTrigger: {
         trigger: ".footer-section",
         start: "top 70%",
         toggleActions: "play none none none",
       },
-      scale: 1,
-      duration: 2,
-      ease: "power2.out"
+      scale: .8,
+      duration: 20,
+      ease: "power2.out",
     };
 
-   
-    const animations = [
-      gsap.fromTo(".person1", { scale: 2, opacity: 1 }, { ...baseAnimation, opacity: 1 }),
-      gsap.fromTo(".person2", { scale: 2, opacity: 1 }, { ...baseAnimation, opacity: 1 }),
-      gsap.fromTo(".person3", { scale: 2, opacity: 1 }, { ...baseAnimation, opacity: 1 }),
-      gsap.fromTo(".person4", { scale: 3, opacity: 1 }, { ...baseAnimation, opacity: 1 }),
-      gsap.fromTo(".text-from-anywhere", {
-        scale: 2,
-        opacity: 0
-      }, {
-        scrollTrigger: {
-          trigger: ".footer-section",
-          start: "top 70%",
-          toggleActions: "play none none none",
+    gsap.fromTo(
+      ".footer-person1",
+      { scale: 1 },
+      { ...baseAnimation, opacity: 1 }
+    ),
+      gsap.fromTo(
+        ".footer-person2",
+        { scale: 1 },
+        { ...baseAnimation, opacity: 1 }
+      ),
+      gsap.fromTo(
+        ".footer-person3",
+        { scale: 1 },
+        { ...baseAnimation, opacity: 1 }
+      ),
+      gsap.fromTo(
+        ".footer-person4",
+        { scale: 1 },
+        { ...baseAnimation, opacity: 1 }
+      ),
+      gsap.fromTo(
+        ".text-from-anywhere",
+        {
+          letterSpacing: "15px"
         },
-        scale: 1,
-        duration: 2,
-        opacity: 1,
-        delay: 1.2,
-        ease: "power2.out",
-      })
-    ];
+        {
+          scrollTrigger: {
+            trigger: ".footer-section",
+            start: "top 40%",   
+            scrub: 2,    
+            toggleActions: "play none none none"
+          },
+          letterSpacing: "45px",
+          duration:20,
+          ease: "power3.out" 
+        }
+      );
+      
 
-  
-    return () => {
-      animations.forEach(animation => animation.kill());
-    };
+      
+
+
   }, []);
-
-
+ 
   return (
     <>
-      <section className="footer-section">
-      <div className="footer-background">
-        <img src={learnImg} className="background-image" alt="Background" />
-      </div>
+      <section className="w-full footer-section md:mt-[100px]">
+        <div className="w-full  max-w-[1500px] mx-auto relative h-[280px] md:h-[500px] lg:h-[600px] xl:h-[800px] ">
+          <img src={learnImg} className="w-full h-full " alt="Background" />
+          <img src={person1} alt="Person 1" className="footer-person1" />
+          <img src={person2} alt="Person 2" className="footer-person2" />
+          <img src={person3} alt="Person 3" className="footer-person3" />
+          <img src={person4} alt="Person 4" className="footer-person4" />
+          <div className="text-from-anywhere">FROM ANYWHERE</div>
+        </div>
+        <div className="w-full max-w-[1500px] mx-auto bg-[#1e1f21] absolute translate-y-[-60px] md:translate-y-[-100px] lg:translate-y-[-120px] xl:translate-y-[-180px] h-[200px]">
+          <div className="w-full">
+            <h3 className="text-center text-white text-[1.2rem]">
+              DOWNLOAD APP
+            </h3>
 
-      <div className="people-container">
-        <img src={person1} alt="Person 1" className="person person1" />
-        <img src={person2} alt="Person 2" className="person person2" />
-        <img src={person3} alt="Person 3" className="person person3" />
-        <img src={person4} alt="Person 4" className="person person4" />
-        <div className="text-from-anywhere">FROM ANYWHERE</div>
-      </div>
+            <div className="w-full flex justify-center items-center gap-2 mt-[10px]">
+              <button className="px-3 py-1 border border-white hover:bg-black/50 cursor-pointer border-dashed rounded-xl flex justify-center items-center text-white gap-1">
+                <img
+                  src={appleIcon}
+                  className="w-[30px] h-[30px]"
+                  alt="App Store"
+                />
+                App Store
+              </button>
 
-      <div className="footer-bar">
-        <div className="download-section">
-          <h3 className="download-title">DOWNLOAD APP</h3>
-          
-          <div className="download-buttons">
-            <button className="download-button">
-              <img src={appleIcon} className="store-icon" alt="App Store" />
-              App Store
-            </button>
-            
-            <button className="download-button">
-              <img 
-                src="https://static.vecteezy.com/system/resources/previews/017/395/379/non_2x/google-play-store-mobile-apps-logo-free-png.png" 
-                className="store-icon" 
-                alt="Google Play" 
-              />
-              Google Play
-            </button>
+              <button className="px-3 py-1 border border-white hover:bg-black/50 cursor-pointer border-dashed rounded-xl flex justify-center items-center text-white gap-1">
+                <img
+                  src="https://static.vecteezy.com/system/resources/previews/017/395/379/non_2x/google-play-store-mobile-apps-logo-free-png.png"
+                  className="w-[30px] h-[30px]"
+                  alt="Google Play"
+                />
+                Google Play
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
     </>
   );

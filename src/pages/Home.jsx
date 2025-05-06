@@ -12,11 +12,12 @@ import corporateBuilding from "../assets/imgs/CORPORATE_BUILDING.png";
 import spaceVedio from "../assets/vedio/spacevedio.mp4"
 import VedioPlayer from "../components/VedioPlayer";
 import Testimonial from "../components/Testimonial";
-import Testimonial1 from "../components/Testimonial1";
 import Footer from "../components/Footer";
 import InfoSection1 from "../components/InfoSection1";
 import HiringPartners from "../components/HiringPartners";
-
+import { AiOutlineClose } from "react-icons/ai";
+import Pinn from "../components/Pinn";
+import TeamMembers from "../components/TeamMembers";
 
 
 const Home = () => {
@@ -289,7 +290,7 @@ const Home = () => {
           {/* Moon landing img */}
           <img
             src={corporateBuilding}
-            className="w-full h-full "
+            className="w-full h-full  object-cover md:object-fill"
             alt=""
           />
         </article>
@@ -303,11 +304,18 @@ const Home = () => {
 
        {/* <Testimonial1/> */}
 
+
+       <TeamMembers/>
+
        <InfoSection1/>
+
+       
 
        <HiringPartners/>
        
        <Footer/>
+
+       {/* <Pinn/> */}
 
       <AnimatePresence mode="wait">
         {openPromo && (
@@ -315,9 +323,9 @@ const Home = () => {
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
-            className="fixed top-0 left-0 bg-black w-full z-[999] h-[100vh]"
-            onClick={handlePromoClose}
+            className="fixed top-0 left-0 bg-black w-full z-[999] h-[100vh] "
           >
+             <span className="absolute top-2 right-2 z-[10] cursor-pointer text-white" onClick={handlePromoClose}><AiOutlineClose/></span>
             <VedioPlayer url={spaceVedio}/>
           </motion.section>
         )}

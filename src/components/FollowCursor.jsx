@@ -28,7 +28,7 @@ const FollowCursor = () => {
 
 
   return (
-    <div id='cursor' className='fixed hidden lg:block top-0 left-0 w-[20px] h-[20px] border-2 rounded-full z-[999] border-red-500 bg-transparent'>
+    <div id='cursor' className='fixed hidden lg:block top-0 left-0 w-[20px] h-[20px] rounded-full z-[999] shadow-lg shadow-red-400 bg-transparent'>
       
     </div>
   )
