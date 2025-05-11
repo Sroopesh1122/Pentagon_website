@@ -13,6 +13,7 @@
 
 body {
   font-family: "Mansfield";
+  scroll-behavior: smooth;
 }
 
 .font-archivo {
@@ -423,7 +424,7 @@ body {
     width: 180px;
     height: 100px;
     top: 320px;
-    left: 400px;
+    left: 300px;
   }
   .footer-person2 {
     position: absolute;
@@ -1027,249 +1028,215 @@ body {
 }
 
 
+/* Team Members */
 
 
+.team-section{
+  /* background-color: #171717; */
+  position: relative;
+}
 
-
-
-
-/* @media screen and (min-width: 1022px){
-  .corporate-window{
-    width: 23px;
-    height: 23px;
-    background: black;
-    position: absolute;
-    top: 450px;
-    left: 298px;
-    transform: skewY(1.2deg);
+.image {
+  border-radius: 10px;
+  position: relative;
+  margin-right: 18px;
+  overflow: hidden;
+  z-index: 1;
+}
+.team-card .image::before {
+  position: absolute;
+  top: 0;
+  left: -75%;
+  z-index: 2;
+  display: block;
+  content: '';
+  width: 50%;
+  height: 100%;
+  background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .3) 100%);
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .3) 100%);
+  transform: skewX(-25deg);
+}
+.team-card:hover .image::before {
+  animation: shine .75s;
+}
+@keyframes shine {
+  100% {
+      left: 125%;
   }
-  
-  .corporate-window-content{
-    width: 23px;
-    height: 23px;
-    transform: skewY(1.2deg);
-  }
-  
-  .window-pulse{
-    position: relative;
-    transform: skewY(1.2deg);
-  }
-  
-  .window-pulse span{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) skewY(1.2deg);
-    background: transparent;
-    border: 1px solid black;
-    animation: windowanimate 2s linear infinite;
-    animation-delay: calc(var(--i) * -1s);
-  }
-  @keyframes windowanimate {
-    0% {
-      width: 23px;
-      height: 23px;
-      opacity: 1;
-    }
-  
-    50% {
-      opacity: 0.7;
-    }
-  
-    100% {
-      width: 29px;
-      height: 29px;
-      opacity: 0;
-    }
-  }
+}
+.team-card .image img {
+  width: 100%;
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  transition-duration: .5s;
+  height: 360px;
+  transform: scale(1.05);
+  position: relative;
+
+}
+.team-card:hover .image img {
+  transform: scale(1);
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  transition-duration: .5s;
+}
+.info-icon {
+  left: 10px;
+  bottom: 10px;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  color: white;
+  z-index: 10;
+}
+
+.member-info{
+  font-size: 12px !important;
+  padding-left: 50px;
+  height: fit-content;
+  transform: translateY(100%);
+  transition: all 1s;
+}
+
+.team-card:hover .member-info{
+  transform: translateY(0%);
 }
 
 
-@media screen and (min-width: 768px) and (max-width: 1020px) {
-  .corporate-info1 {
-    position: absolute;
-    bottom: 140px;
-    left: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
 
-  .corporate-info2 {
-    position: absolute;
-    top: 18%;
-    left: 19%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-
-  .corporate-info3 {
-    position: absolute;
-    top: 50%;
-    left: 30%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-
-  .corporate-info4 {
-    position: absolute;
-    top: 42%;
-    left: 45%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-  
-  .corporate-window{
-    width: 23px;
-    height: 23px;
-    background: black;
-    position: absolute;
-    top: 210px;
-    left: 298px;
-    transform: skewY(1.2deg);
-  }
-  
-  .corporate-window-content{
-    width: 23px;
-    height: 23px;
-    transform: skewY(1.2deg);
-  }
-  
-  .window-pulse{
-    position: relative;
-    transform: skewY(1.2deg);
-  }
-  
-  .window-pulse span{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) skewY(1.2deg);
-    background: transparent;
-    border: 1px solid black;
-    animation: windowanimate 2s linear infinite;
-    animation-delay: calc(var(--i) * -1s);
-  }
-  @keyframes windowanimate {
-    0% {
-      width: 23px;
-      height: 23px;
-      opacity: 1;
-    }
-  
-    50% {
-      opacity: 0.7;
-    }
-  
-    100% {
-      width: 29px;
-      height: 29px;
-      opacity: 0;
-    }
-  }
+.contact {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 10px;
+  border-radius: 20px;
+  padding-top: 90px;
+  padding-right: 50px;
+  margin-top: -70px;
+  text-align: center;
+  padding-bottom: 15px;
+}
+.contact a {
+  font-size: 24px;
+  font-weight: 600;
+  text-transform: capitalize;
+  display: block;
+  margin: 0;
+  color: #ff210d;
+  transition: all .35s ease-in;
+}
+.contact a:hover {
+  color: #ff210d;
+  transition: all .35s ease-in-out;
+}
+.contact span {
+  font-weight: 400;
+  color: black;
 }
 
-@media screen and (max-width: 767px) {
-  
 
-  .corporate-info1 {
-    position: absolute;
-    top: 40%;
-    left: 2%;
-    display: flex;
-    justify-content: center;
-    transform: scale(0.7);
-    align-items: flex-start;
-    justify-content: flex-start;
+
+
+
+
+
+
+.gallery{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  
+ }
+  
+ .left{
+  width: 50%;
+ }
+
+ .content{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  padding: 20px;
+ }
+
+ .content h2{
+  color: red;
+ }
+
+
+ .right{
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+
+ .box-container{
+  width: 450px;
+  height: 500px;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+ }
+
+ .box{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+ }
+ .red{
+  background: red;
+ }
+ .blue{
+  background: blue;
+ }
+ .yellow{
+  background: yellow;
+ }
+ .green{
+  background: green;
+ }
+
+ .box img{
+  width: 100%;
+  height: 100%;
+ }
+ .spacer{
+  width: 100%;
+  height: 100vh;
+ }
+
+
+
+
+ /* Not Found */
+
+
+ .animate-slow-bounce{
+  animation: slowBounce 10s infinite linear;
+ }
+
+
+ @keyframes slowBounce {
+
+  0%{
+    transform: translateY(0px) ;
   }
 
-  .corporate-info2 {
-    position: absolute;
-    top: 22%;
-    left: 14%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
-    transform: scale(0.7);
+  50%{
+    transform: translateY(50px);
   }
 
-  .corporate-info3 {
-    position: absolute;
-    top: 50%;
-    left: 25%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    transform: scale(0.7);
-  }
-
-  .corporate-info4 {
-    position: absolute;
-    top: 42%;
-    left: 45%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
-    transform: scale(0.7);
-  }
-   
-  .corporate-window{
-    width: 20px;
-    height: 20px;
-    background: black;
-    position: absolute;
-    top: 157px;
-    left: 151px;
-    transform: skewY(1.2deg);
+  100%{
+     transform: translateY(0px);
   }
   
-  .corporate-window-content{
-    width: 20px;
-    height: 20px;
-    transform: skewY(1.2deg);
-  }
-  
-  .window-pulse{
-    position: relative;
-    transform: skewY(1.2deg);
-  }
-  
-  .window-pulse span{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) skewY(1.2deg);
-    background: transparent;
-    border: 1px solid black;
-    animation: windowanimate 2s linear infinite;
-    animation-delay: calc(var(--i) * -1s);
-  }
-  @keyframes windowanimate {
-    0% {
-      width: 20px;
-      height: 20px;
-      opacity: 1;
-    }
-  
-    50% {
-      opacity: 0.7;
-    }
-  
-    100% {
-      width: 25px;
-      height: 25px;
-      opacity: 0;
-    }
-  }
-
-} */
+ }

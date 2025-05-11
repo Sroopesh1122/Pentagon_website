@@ -1,71 +1,100 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import SurahSir from "../assets/imgs/teamMembers/SurajSir.png"
+import KarthikSir from "../assets/imgs/teamMembers/Karthik Sir.png"
+import SharathSir from "../assets/imgs/teamMembers/Sharath sir.png"
 
-gsap.registerPlugin(ScrollTrigger);
 
 const Pinn = () => {
-  const imagesRef = useRef([]);
-  const sectionsRef = useRef([]);
+ 
+  const TEAM_DETAILS=[
+          {
+              key:1,
+              img:SurahSir,
+              name:"Mr. Suraj Vijay Sheety",
+              desc:"CEO & Managing Director",
+              info:"As the CEO of Pentagon, he has beeen instrumental in diving digital transformation in learning, creating accessible, engaging, and AI-enhanced educational experiences of learners globally."
+          },{
+              key:2,
+              img:SharathSir,
+              name:"Mr Sharath Basavaraju",
+              desc:"Head-Product & Engineering",
+              info:"Over 9 years of experience specializing in Java Full Stack Development, with deep expertise across front-end and back-end technologies."
+          },{
+              key:3,
+              img:KarthikSir,
+              name:"Mr Karthik",
+              desc:"Software Architect & Placement Executive",
+              info:"Over 13 years of experience with strong expertise in Java Full Stack Developmwnt and a proven track record as a Placement Executive, bridging technology and talent."
+          }
+      ]
+
+
 
   useEffect(() => {
-    // Reset ScrollTrigger in case of hot reload
-    ScrollTrigger.killAll();
-
-    // Set all images hidden initially
-    gsap.set(imagesRef.current, { autoAlpha: 0, position: "absolute" });
-
-    // Show the first image initially
-    gsap.set(imagesRef.current[0], { autoAlpha: 1 });
-
-    sectionsRef.current.forEach((section, idx) => {
+    const ctx = gsap.context(() => {
+      const boxes = gsap.utils.toArray(".box:not(:first-child)");
+  
+      gsap.set(boxes, { yPercent: 100 });
+  
+      const animation = gsap.to(boxes, {
+        yPercent: -100,
+        duration: 1,
+        stagger: 1
+      });
+  
       ScrollTrigger.create({
-        trigger: section,
-        start: "top center",
-        end: "bottom center",
+        trigger: ".gallery",
+        start: "top top",
+        end: "bottom bottom",
+        pin: ".right",
+        animation: animation,
         scrub: true,
-        onEnter: () => showImage(idx),
-        onEnterBack: () => showImage(idx),
       });
     });
-
-    function showImage(idx) {
-      gsap.to(imagesRef.current, { autoAlpha: 0, duration: 0.3 });
-      gsap.to(imagesRef.current[idx], { autoAlpha: 1, duration: 0.5 });
-    }
+  
+    return () => ctx.revert(); // clean up on unmount
   }, []);
 
   return (
-    <section className="w-full h-[100vh] overflow-auto flex relative">
-      {/* Left Scrolling Section */}
-      <section className="w-[70%]">
-        {[1, 2, 3, 4, 5].map((_, idx) => (
-          <div
-            key={idx}
-            ref={(el) => (sectionsRef.current[idx] = el)}
-            className="w-full h-[100vh] flex justify-center items-center text-4xl"
-          >
-            Section {idx}
-          </div>
-        ))}
+    <>
+      <section className="w-full flex justify-center items-center mt-[20px]">
+         <h1 className="text-3xl font-semibold">Out Team Members</h1>
       </section>
 
-      {/* Right Sticky Images */}
-      <section className="w-[30%] h-[100vh] sticky top-0 flex justify-center items-center">
-        <div className="w-[300px] h-[300px] bg-red-500 relative overflow-hidden">
-          {[1, 2, 3, 4, 5].map((_, idx) => (
-            <span
-              key={idx}
-              ref={(el) => (imagesRef.current[idx] = el)}
-              className="absolute w-full h-full flex justify-center items-center bg-green-500 text-white text-2xl"
-            >
-              Img {idx}
-            </span>
-          ))}
+      <div class="gallery">
+        <div class="left">
+          {
+            TEAM_DETAILS.map((details,idx)=><div class="content">
+            <div className="p-10">
+              <h2 className="text-2xl font-semibold">{details.name}</h2>
+              <h1 className="text-lg">{details.desc}</h1>
+              <p className="text-[0.9rem] text-start w-full mt-[30px]">
+                {details.info}
+              </p>
+            </div>
+          </div>)
+          }
+          
         </div>
-      </section>
-      
-    </section>
+
+        <div class="right">
+          <div class="box-container">
+            {
+              TEAM_DETAILS.map((details,idx)=><div class="box">
+              <img
+                src={details.img}
+                alt=""
+              />
+            </div>)
+            }
+            
+          </div>
+        </div>
+      </div>
+
+    </>
   );
 };
 

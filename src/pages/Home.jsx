@@ -16,7 +16,7 @@ import Footer from "../components/Footer";
 import InfoSection1 from "../components/InfoSection1";
 import HiringPartners from "../components/HiringPartners";
 import { AiOutlineClose } from "react-icons/ai";
-import Pinn from "../components/Pinn";
+import { FaPlay } from "react-icons/fa";
 import TeamMembers from "../components/TeamMembers";
 
 
@@ -78,7 +78,7 @@ const Home = () => {
       <section id="hero-section" className="w-full">
         
 
-        <article className="w-full relative   flex justify-center items-center">
+        <article className="w-full relative    flex justify-center items-center">
           <div className="relative w-[400px] h-[400px] flex justify-center items-center  code-orbit ">
             {/* Outer Circle: Top and Bottom */}
             <div className="orbit orbit-outer code-outer-orbit">
@@ -132,33 +132,34 @@ const Home = () => {
             {/* Central Image */}
             <img
               src={spaceHuman}
-              className="absolute w-[190px]  h-[150px] rounded-full -z-10 "
+              className="absolute w-[185px]  h-[145px] rounded-full -z-10 "
               alt="Central"
             />
           </div>
           
-        <button
+          <button
           onClick={() => setPromoOpen(true)}
           className="px-[30px] into-btn absolute bottom-[30px] right-[5%]  md:right-[10%] lg:right-[25%] flex gap-[1px] justify-center items-center cursor-pointer rounded-sm py-1 text-2xl"
           >
             
-            <div className="w-[60px] h-[60px] md:w-[80px] md:h-[80px] bg-black rounded-full flex justify-center -rotate-90 items-center pulse">
-              <span style={{'--i':1}}></span>
-              <img
-                src={triangle}
-                className="w-[15px] h-[15px] rotate-0 "
-                alt=""
-              />
+            <div className="w-[60px] relative h-[60px] md:w-[80px] md:h-[80px] bg-black rounded-full flex justify-center items-center pulse">
+               
+                <div className="absolute left-full font-semibold text-sm top-full">
+                    Watch <br /> Demo
+                </div>
+                
+               <span style={{'--i':1}}></span>
+               <FaPlay size={23} className="text-red-500 "/>
             </div>
           </button>
      
 
         </article>
 
-        <article className=" w-full md:mt-[20px]">
+        <article className=" w-full md:mt-[20px] hero-info1">
           <div className="w-full font-[500] flex justify-center items-center flex-col uppercase text-[1.2rem] md:text-[2rem]">
             <span className="text-[1rem] md:text-[2rem] font-extrabold hero-info-1">
-              BREATH WITH CODE DEEP WITH
+              BREATH WITH CODE DEEP WITH 
             </span>
           </div>
         </article>
@@ -200,7 +201,24 @@ const Home = () => {
           </button>
         </article>
 
-        <article className="w-full  min-h-[50vh] flex justify-center items-center">
+        <article className="w-full relative mt-[100px]   flex justify-center items-center">
+
+          <button
+          onClick={() => setPromoOpen(true)}
+          className="px-[30px] into-btn absolute bottom-[30px] left-[2%]  md:left-[10%] lg:left-[25%] flex gap-[1px] justify-center items-center cursor-pointer rounded-sm py-1 text-2xl"
+          >
+            
+            <div className="w-[60px] relative h-[60px] md:w-[80px] md:h-[80px] bg-black rounded-full flex justify-center items-center pulse">
+               
+                <div className="absolute left-full font-semibold text-sm top-full">
+                    Watch <br /> Demo
+                </div>
+                
+               <span style={{'--i':1}}></span>
+               <FaPlay size={23} className="text-red-500 "/>
+            </div>
+        </button>
+           
           <div className="relative w-[400px] h-[400px] flex justify-center items-center">
             {/* Outer Circle: Top and Bottom */}
             <div className="orbit orbit-outer">
@@ -253,6 +271,8 @@ const Home = () => {
                 ))}
               </div>
             </div>
+             
+             
 
             {/* Central Image */}
             <img
@@ -263,7 +283,7 @@ const Home = () => {
           </div>
         </article>
 
-        <article className=" w-full md:mt-[20px] flex justify-center items-center">
+        <article className=" w-full mt-[20px] md:mt-[50px] flex justify-center items-center">
           <span className="px-6 hover:tracking-widest duration-300 cursor-pointer hover:bg-white hover:text-black border border-transparent hover:border-black tracking-wider text-xl md:text-2xl uppercase py-1 rounded-full bg-black text-white font-semibold">
             Pay fees
           </span>
@@ -305,7 +325,7 @@ const Home = () => {
        {/* <Testimonial1/> */}
 
 
-       {/* <TeamMembers/> */}
+       <TeamMembers/>
 
        <InfoSection1/>
 
