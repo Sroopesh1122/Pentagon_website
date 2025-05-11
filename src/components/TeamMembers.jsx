@@ -19,9 +19,8 @@ import "swiper/css/pagination";
 
 const TeamMembers = () => {
 
-
-  
-  const TEAM_DETAILS = [
+const TEAM_DETAILS =
+[
   {
     key: 1,
     img: SurajSir,
@@ -86,7 +85,6 @@ const TeamMembers = () => {
     info: "Focused on bridging the gap between academic knowledge and industry requirements through practical and impactful training sessions.",
   },
 ];
-
 
   return (
     <>
