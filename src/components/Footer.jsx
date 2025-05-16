@@ -7,6 +7,7 @@ import person4 from "../assets/imgs/Layer7.png";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import appleIcon from "../assets/imgs/mac-os.png";
+import PageFooter from "./PageFooter";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -65,7 +66,7 @@ const Footer = () => {
  
   return (
     <>
-      <section className="w-full max-w-[1800px] mx-auto  footer-section md:mt-[100px] ">
+      <section className="w-full relative max-w-[1800px] mx-auto  footer-section md:mt-[100px]  bg-[#1e1f21]">
         <div className="w-full   relative h-[280px] md:h-[500px] lg:h-[600px] xl:h-[800px] ">
           <img src={learnImg} className="w-full h-full object-cover" alt="Background" />
           <img src={person1} alt="Person 1" className="footer-person1" />
@@ -74,8 +75,12 @@ const Footer = () => {
           <img src={person4} alt="Person 4" className="footer-person4" />
           <div className="text-from-anywhere">FROM ANYWHERE</div>
         </div>
+         
+        
 
-        <div className="w-full z-[4]  bg-[#1e1f21] absolute translate-y-[-60px] md:translate-y-[-100px] lg:translate-y-[-120px] xl:translate-y-[-180px] h-[200px]">
+        <div className="w-full z-[4]  bg-[#1e1f21] absolute translate-y-[-60px] md:translate-y-[-100px] lg:translate-y-[-120px] xl:translate-y-[-180px]">
+           
+      
           <div className="w-full">
             <h3 className="text-center text-white text-[1.2rem]">
               DOWNLOAD APP
@@ -101,6 +106,9 @@ const Footer = () => {
               </button>
             </div>
           </div>
+           
+           {/* <PageFooter/> */}
+           
         </div>  
       </section>
 

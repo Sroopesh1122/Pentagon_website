@@ -18,6 +18,7 @@ import HiringPartners from "../components/HiringPartners";
 import { AiOutlineClose } from "react-icons/ai";
 import { FaPlay } from "react-icons/fa";
 import TeamMembers from "../components/TeamMembers";
+import PageFooter from "../components/PageFooter";
 
 
 const Home = () => {
@@ -145,7 +146,7 @@ const Home = () => {
             <div className="w-[60px] relative h-[60px] md:w-[80px] md:h-[80px] bg-black rounded-full flex justify-center items-center pulse">
                
                 <div className="absolute left-full font-semibold text-sm top-full">
-                    Watch <br /> Demo
+                    Play <br /> Now
                 </div>
                 
                <span style={{'--i':1}}></span>
@@ -335,7 +336,8 @@ const Home = () => {
        
        <Footer/>
 
-       {/* <Pinn/> */}
+       <PageFooter/>
+
 
       <AnimatePresence mode="wait">
         {openPromo && (
