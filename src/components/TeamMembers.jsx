@@ -22,21 +22,21 @@ const TeamMembers = () => {
     {
       key: 1,
       img: SurajSir,
-      name: "Mr. Suraj Vijay Sheety",
+      name: "Mr. Suraj Vijay Shetty",
       desc: "CEO & Managing Director",
       info: "Suraj Vijay Shetty is the CEO of Pentagon Space and a seasoned edtech leader with 8+ years of experience. He has upskilled over 50,000 job aspirants and helped 2,500+ software companies find the right talent through customized hiring plans. Suraj has built and led high-performing teams across Sales, Training, and Operations. He specializes in creating effective upskilling programs and strategic recruitment solutions. His strong industry network enables him to bridge the gap between talent and opportunity.",
     },
     {
       key: 2,
       img: SharathSir,
-      name: "Mr Sharath Basavaraju",
+      name: "Mr. Sharath Basavaraju",
       desc: "Head-Product & Engineering",
       info: "Over 9 years of experience specializing in Java Full Stack Development, with deep expertise across front-end and back-end technologies.",
     },
     {
       key: 3,
       img: KarthikSir,
-      name: "Mr Karthik",
+      name: "Mr. Karthik",
       desc: "Software Architect & Placement Head",
       info: "Over 13 years of experience with strong expertise in Java Full Stack Development and a proven track record as a Placement Executive, bridging technology and talent.",
     },
@@ -57,28 +57,28 @@ const TeamMembers = () => {
     {
       key: 6,
       img: KiranSir,
-      name: "Mr Kiran",
+      name: "Mr. Kiran",
       desc: "Technical Trainer",
       info: "Dedicated to empowering students through hands-on training in software development and industry best practices.",
     },
     {
       key: 7,
       img: PavanSir,
-      name: "Mr Pavan Kumar",
+      name: "Mr. Pavan Kumar",
       desc: "Technical Trainer",
       info: "Passionate about teaching core programming concepts and helping students build strong technical foundations for their careers.",
     },
     {
       key: 8,
       img: NihalSir,
-      name: "Mr Nihal",
+      name: "Mr. Nihal",
       desc: "Technical Trainer",
       info: "Committed to delivering quality technical education and supporting learners in mastering modern development tools and techniques.",
     },
     {
       key: 9,
       img: ShivKumarSir,
-      name: "Mr Shiva Kumar Sir",
+      name: "Mr. Shiva Kumar Sir",
       desc: "Technical Trainer",
       info: "Focused on bridging the gap between academic knowledge and industry requirements through practical and impactful training sessions.",
     },
@@ -93,7 +93,7 @@ const TeamMembers = () => {
         <article className="w-full flex justify-center items-center">
           <h1 className="text-3xl font-semibold">Our Team Members</h1>
         </article>
-        <article className="w-full  max-w-[1200px] mx-auto px-8 flex  gap-2 justify-end items-center mt-[40px]">
+        <article className="w-full  max-w-[1200px] mx-auto px-8 flex  gap-2 justify-between items-center mt-[40px]">
           <FaArrowCircleLeft
             size={25}
             className="cursor-pointer team-members-prev duration-500 hover:text-red-500"
