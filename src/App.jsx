@@ -4,6 +4,14 @@ import AppWrapper from './components/AppWrapper'
 import Home from './pages/Home'
 import NotFound from './pages/NotFound';
 import { LuLoaderCircle } from "react-icons/lu";
+import AboutUs from './pages/AboutUs';
+import StudentSignIn from './placement-portal/pages/student/StudentSignIn';
+import AdminSignIn from './placement-portal/pages/admin/AdminSignIn';
+import AdminAppWrapper from './placement-portal/components/admin/AdminAppWrapper';
+import StudentSignUp from './placement-portal/pages/student/StudentSignUp';
+import AdminDashboard from './placement-portal/pages/admin/AdminDashboard';
+import AdminEmployeesList from './placement-portal/pages/admin/AdminEmployeesList';
+import StudentAppWrapper from './placement-portal/components/student/StudentAppWrapper';
 
 function App() {
 
@@ -39,10 +47,26 @@ function App() {
   return (
     <BrowserRouter>
      <Routes>
+           <Route path='/auth/student/signin' element={<StudentSignIn/>}/>
+           <Route path='/auth/student/signup' element={<StudentSignUp/>}/>
+           <Route path='/auth/admin/signin' element={<AdminSignIn/>}/>
+
+            <Route path='/admin' element={<AdminAppWrapper/>}>
+                <Route index element={<AdminDashboard/>}/>
+                <Route path='/admin/employees' element={<AdminEmployeesList/>}/>
+           </Route>
+
+           
+           <Route path='/student' element={<StudentAppWrapper/>}>
+               
+           </Route>
+
        <Route path='/' element={<AppWrapper/>}>
           <Route index element={<Home/>}/>
+          <Route path='/about' element={<AboutUs/>}/>
           <Route path='*' element={<NotFound/>}/>
        </Route>
+
      </Routes>
     </BrowserRouter>
   )

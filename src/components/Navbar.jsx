@@ -3,25 +3,52 @@ import Brand from "./Brand";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
+import { gsap } from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
+gsap.registerPlugin(ScrollToPlugin);
 
 const menuItems = [
   {
-    key: "courses",
-    label: "COURSES",
-    isLink: false,
-    section: ".courses-section",
+    key: "Home",
+    label: "Home",
+    path: "/",
   },
   {
     key: "aboutUs",
     label: "ABOUT US",
-    path: ".about-section",
+    path: "/about",
   },
+  
+];
+
+
+const menuItemsLink =[
   {
     key: "verifyCertificate",
     label: "Verify Certificate",
-    path: "/verifyCertificate",
+    path: "https://online.pentagonspace.in/verify-certificate",
   },
-];
+  {
+    key: "LMS",
+    label: "LMS Portal",
+    path: "https://online.pentagonspace.in",
+  }
+]
+
+
+const handleScrollTo = (location) => {
+    gsap.to(window, {
+      duration: 1,
+      scrollTo: location,
+      ease: "power2.inOut",
+    });
+  };
+
+
+ const handleMenuItemLinkClick=(link)=>{
+  window.open(link,"_blank");
+ } 
 
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -36,13 +63,24 @@ const Navbar = () => {
           onClick={() => setNavbarOpen(true)}
         />
         <article className="hidden lg:flex justify-center items-center gap-5 uppercase font-[500] text-[0.9rem]">
+          
+
           {menuItems.map((item, idx) => (
             <Link className="underline-nav" key={item.key} to={item.path}>
               {item.label}
             </Link>
           ))}
-          <button>DOWNLOAD APP</button>
-          <button>LOGIN</button>
+          <a className="underline-nav cursor-pointer" href="/#course-section">
+              Courses
+          </a>
+
+          {menuItemsLink.map((item, idx) => (
+            <div className="underline-nav cursor-pointer" key={item.key} onClick={()=>handleMenuItemLinkClick(item.path)}>
+              {item.label}
+            </div>
+          ))}
+
+
         </article>
       </section>
 

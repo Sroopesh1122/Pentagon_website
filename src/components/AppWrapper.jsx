@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import FollowCursor from "./FollowCursor";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import PageFooter from "./PageFooter";
 
 
 gsap.registerPlugin(ScrollTrigger)
@@ -32,10 +33,11 @@ const AppWrapper = () => {
   }, []);
 
   return (
-    <section className="w-full max-w-[1800px] mx-auto overflow-hidden">
+    <section className="w-full max-w-[1800px] mx-auto overflow-hidden  font-Mansfield">
       <FollowCursor />
       <Navbar />
       <Outlet />
+      <PageFooter/>
     </section>
   );
 };

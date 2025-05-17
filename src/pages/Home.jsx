@@ -160,7 +160,7 @@ const Home = () => {
         <article className=" w-full md:mt-[20px] hero-info1">
           <div className="w-full font-[500] flex justify-center items-center flex-col uppercase text-[1.2rem] md:text-[2rem]">
             <span className="text-[1rem] md:text-[2rem] font-extrabold hero-info-1">
-              BREATH WITH CODE DEEP WITH 
+              BREATH DEEP WITH CODE
             </span>
           </div>
         </article>
@@ -186,7 +186,7 @@ const Home = () => {
 
        {/* Courses Section */}
 
-      <section className="w-full mt-[50px] md:mt-[120px] ">
+      <section id="course-section" className="w-full mt-[50px] md:mt-[120px] ">
         <article className="flex w-full justify-center items-center pt-[30px]">
           <button className="px-[30px] flex gap-[1px] justify-center items-center cursor-pointer rounded-sm py-1   text-2xl">
             <div className="border border-black font-extrabold px-2 py-1">
@@ -336,7 +336,7 @@ const Home = () => {
        
        <Footer/>
 
-       <PageFooter/>
+       {/* <PageFooter/> */}
 
 
       <AnimatePresence mode="wait">

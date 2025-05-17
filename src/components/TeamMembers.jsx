@@ -66,7 +66,7 @@ const TeamMembers = () => {
       img: PavanSir,
       name: "Mr Pavan Kumar",
       desc: "Technical Trainer",
-      info: "Passionate about teaching core programming concepts and helping students build strong technical foundations for their careers.",
+      info: "4+ Years of experience with deep knowledge in Web Technologies, MERN, delivering practical and industry-relevant training.",
     },
     {
       key: 8,

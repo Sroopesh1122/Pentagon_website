@@ -11,7 +11,58 @@
   outline: none;
 }
 
-body {
+
+
+.font-primary{
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+}
+
+.font-secondary
+{
+    font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+}
+
+.font-outfit{
+font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+}
+
+.bg-primary{
+    @apply bg-orange-400
+}
+
+input{
+    outline: none;
+}
+
+*{
+    outline: none;
+}
+
+
+.hide-scrollbar {
+  overflow: auto;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari and Opera */
+}
+
+
+
+
+
+
+.font-outfit{
+    font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+}
+
+.font-Mansfield{
   font-family: "Mansfield";
   scroll-behavior: smooth;
 }

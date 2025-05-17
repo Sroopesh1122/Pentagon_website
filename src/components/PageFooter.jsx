@@ -10,12 +10,12 @@ const PageFooter = () => {
         {
           key: 1,
           label: "Contact Us",
-          link: "",
+          link: "https://online.pentagonspace.in/#contact-us",
         },
         {
           key: 2,
-          label: "Login",
-          link: "",
+          label: "LMS Portal",
+          link: "https://online.pentagonspace.in",
         },
       ],
     },
@@ -26,12 +26,12 @@ const PageFooter = () => {
         {
           key: 1,
           label: "Treams & conditions",
-          link: "",
+          link: "https://online.pentagonspace.in/terms-and-conditions",
         },
         {
           key: 2,
           label: "Privacy Policy",
-          link: "",
+          link: "https://online.pentagonspace.in/privacy-policy",
         },
       ],
     },
@@ -42,31 +42,37 @@ const PageFooter = () => {
         {
           key: 1,
           label: "Twitter",
-          link: "",
+          link: "https://x.com/pentagon_space",
         },
         {
           key: 2,
           label: "Facebook",
-          link: "",
+          link: "https://www.facebook.com/PentagonSpace",
         },
         {
           key: 3,
           label: "LinkedIn",
-          link: "",
+          link: "https://www.linkedin.com/company/pentagonspace/",
         },
         {
           key: 2,
           label: "Youtube",
-          link: "",
+          link: "https://www.youtube.com/c/PentagonSpaceBlr/featured",
         },
         {
           key: 2,
           label: "Instagram",
-          link: "",
+          link: "https://www.instagram.com/accounts/login/?next=%2Fpentagon_space%2F",
         },
       ],
     }
   ];
+
+
+
+  const handleLinkClick=(link)=>{
+   window.open(link, "_blank");
+  }
 
   return (
     <section className="w-full relative max-w-[1800px] mx-auto bg-[#1e1f21] pt-[30px]">
@@ -78,9 +84,10 @@ const PageFooter = () => {
               <h1
                 key={links.key}
                 className="text-[0.9rem] cursor-pointer my-[10px] hover:underline underline-offset-2"
+                onClick={()=>handleLinkClick(links.link)}
               >
               
-                {links.label}
+                {links.label } 
               </h1>
             ))}
           </div>
