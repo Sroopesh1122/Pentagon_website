@@ -938,8 +938,6 @@ input{
 
 
 @media screen and (min-width: 1440px) {
-
-
   .corporate-info1 {
     position: absolute;
     top: 250px;
@@ -1190,87 +1188,7 @@ input{
 
 
 
-
-
-
-
-.gallery{
-  width: 100%;
-  height: 100%;
-  display: flex;
-  
- }
-  
- .left{
-  width: 50%;
- }
-
- .content{
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  padding: 20px;
- }
-
- .content h2{
-  color: red;
- }
-
-
- .right{
-  width: 50%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
- }
-
- .box-container{
-  width: 450px;
-  height: 500px;
-  position: relative;
-  border-radius: 10px;
-  overflow: hidden;
- }
-
- .box{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
- }
- .red{
-  background: red;
- }
- .blue{
-  background: blue;
- }
- .yellow{
-  background: yellow;
- }
- .green{
-  background: green;
- }
-
- .box img{
-  width: 100%;
-  height: 100%;
- }
- .spacer{
-  width: 100%;
-  height: 100vh;
- }
-
-
-
-
  /* Not Found */
-
-
  .animate-slow-bounce{
   animation: slowBounce 10s infinite linear;
  }

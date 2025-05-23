@@ -3,9 +3,9 @@
 
 
 .bg-primary1{
-    @apply bg-blue-600
+    @apply bg-gradient-to-r from-rose-400 to-red-500
 }
 
 .text-primary{
-    @apply text-blue-600
+    @apply bg-gradient-to-r from-rose-400 to-red-500 bg-clip-text text-transparent
 }
