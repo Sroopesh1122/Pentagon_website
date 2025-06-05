@@ -1,3 +1,4 @@
+import SoftwareTestingPage from "./pages/SoftwareTesting";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AppWrapper from "./components/AppWrapper";
@@ -5,6 +6,11 @@ import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import { LuLoaderCircle } from "react-icons/lu";
 import AboutUs from "./pages/AboutUs";
+import Courses from "./pages/courses";
+
+import JavaFullStack from "./pages/JavaFullStack";
+import PythonFullStack from "./pages/PythonFullStack";
+import MernFullStack from "./pages/MernFullStack";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -43,10 +49,14 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-
         <Route path="/" element={<AppWrapper />}>
           <Route index element={<Home />} />
-          <Route path="/about" element={<AboutUs />} />
+          <Route path="about" element={<AboutUs />} />
+          <Route path="courses" element={<Courses />} />
+          <Route path="java-full-stack" element={<JavaFullStack />} />
+          <Route path="python-full-stack" element={<PythonFullStack />} />
+          <Route path="mern-full-stack" element={<MernFullStack />} />
+          <Route path="software-testing" element={<SoftwareTestingPage />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

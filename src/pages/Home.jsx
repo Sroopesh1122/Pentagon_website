@@ -9,7 +9,7 @@ import mernImg from "../assets/imgs/MERN.png";
 import pythonImg from "../assets/imgs/PYTHON.png";
 import testingImg from "../assets/imgs/TESTING.png";
 import corporateBuilding from "../assets/imgs/CORPORATE_BUILDING.png";
-import spaceVedio from "../assets/vedio/spacevedio.mp4"
+import spaceVedio from "../assets/vedio/spacevedio.mp4";
 import VedioPlayer from "../components/VedioPlayer";
 import Testimonial from "../components/Testimonial";
 import Footer from "../components/Footer";
@@ -20,9 +20,7 @@ import { FaPlay } from "react-icons/fa";
 import TeamMembers from "../components/TeamMembers";
 import PageFooter from "../components/PageFooter";
 
-
 const Home = () => {
-
   const TEXT = [
     { label: "CODE", path: "/code" },
     { label: "BREATH", path: "/breath" },
@@ -35,30 +33,30 @@ const Home = () => {
       key: "java-full-stack",
       label: "JAVA FULL STACK",
       img: javaImg,
-      link:"https://pentagonspace.in/java-fullstack-development.php"
+      link: "/java-full-stack",
     },
     {
       key: "python-full-stack",
       label: "PYTHON FULL STACK",
       img: pythonImg,
-      link:"https://pentagonspace.in/python-fullstack-development.php"
+      link: "/courses#python-full-stack",
     },
     {
       key: "mern-full-stack",
       label: "MERN STACK",
       img: mernImg,
-      link:"https://pentagonspace.in/mern-stack-development.php"
+      link: "/courses#mern-stack",
     },
     {
       key: "software-testing",
       label: "SOFTWARE TESTING",
       img: testingImg,
-      link:"https://pentagonspace.in/software-testing.php"
+      link: "/courses#software-testing",
     },
   ];
 
   const COURSE_HERO_1 = "Get the code to travel smart and safe";
-  const COURSE_HERO_2 = "to reach your first tech mountain"
+  const COURSE_HERO_2 = "to reach your first tech mountain";
 
   const [openPromo, setPromoOpen] = useState(false);
 
@@ -77,8 +75,6 @@ const Home = () => {
   return (
     <>
       <section id="hero-section" className="w-full">
-        
-
         <article className="w-full relative    flex justify-center items-center">
           <div className="relative w-[400px] h-[400px] flex justify-center items-center  code-orbit ">
             {/* Outer Circle: Top and Bottom */}
@@ -137,24 +133,20 @@ const Home = () => {
               alt="Central"
             />
           </div>
-          
+
           <button
-          onClick={() => setPromoOpen(true)}
-          className="px-[30px] into-btn absolute bottom-[30px] right-[5%]  md:right-[10%] lg:right-[25%] flex gap-[1px] justify-center items-center cursor-pointer rounded-sm py-1 text-2xl"
+            onClick={() => setPromoOpen(true)}
+            className="px-[30px] into-btn absolute bottom-[30px] right-[5%]  md:right-[10%] lg:right-[25%] flex gap-[1px] justify-center items-center cursor-pointer rounded-sm py-1 text-2xl"
           >
-            
             <div className="w-[60px] relative h-[60px] md:w-[80px] md:h-[80px] bg-black rounded-full flex justify-center items-center pulse">
-               
-                <div className="absolute left-full font-semibold text-sm top-full">
-                    Play <br /> Now
-                </div>
-                
-               <span style={{'--i':1}}></span>
-               <FaPlay size={23} className="text-red-500 "/>
+              <div className="absolute left-full font-semibold text-sm top-full">
+                Play <br /> Now
+              </div>
+
+              <span style={{ "--i": 1 }}></span>
+              <FaPlay size={23} className="text-red-500 " />
             </div>
           </button>
-     
-
         </article>
 
         <article className=" w-full md:mt-[20px] hero-info1">
@@ -167,7 +159,11 @@ const Home = () => {
 
         <article className="w-full relative h-[30vh] md:h-[300px] md:mt-[20px] ">
           {/* Moon lading img    */}
-          <img src={moonfloor} className="w-full h-full img-reflect moon-land" alt="" />
+          <img
+            src={moonfloor}
+            className="w-full h-full img-reflect moon-land"
+            alt=""
+          />
 
           {/* Astronut img */}
           <img
@@ -182,9 +178,7 @@ const Home = () => {
         </article>
       </section>
 
-
-
-       {/* Courses Section */}
+      {/* Courses Section */}
 
       <section id="course-section" className="w-full mt-[50px] md:mt-[120px] ">
         <article className="flex w-full justify-center items-center pt-[30px]">
@@ -203,23 +197,20 @@ const Home = () => {
         </article>
 
         <article className="w-full relative mt-[100px]   flex justify-center items-center">
-
           <button
-          onClick={() => setPromoOpen(true)}
-          className="px-[30px] into-btn absolute bottom-[30px] left-[2%]  md:left-[10%] lg:left-[25%] flex gap-[1px] justify-center items-center cursor-pointer rounded-sm py-1 text-2xl"
+            onClick={() => setPromoOpen(true)}
+            className="px-[30px] into-btn absolute bottom-[30px] left-[2%]  md:left-[10%] lg:left-[25%] flex gap-[1px] justify-center items-center cursor-pointer rounded-sm py-1 text-2xl"
           >
-            
             <div className="w-[60px] relative h-[60px] md:w-[80px] md:h-[80px] bg-black rounded-full flex justify-center items-center pulse">
-               
-                <div className="absolute left-full font-semibold text-sm top-full">
-                    Watch <br /> Demo
-                </div>
-                
-               <span style={{'--i':1}}></span>
-               <FaPlay size={23} className="text-red-500 "/>
+              <div className="absolute left-full font-semibold text-sm top-full">
+                Watch <br /> Demo
+              </div>
+
+              <span style={{ "--i": 1 }}></span>
+              <FaPlay size={23} className="text-red-500 " />
             </div>
-        </button>
-           
+          </button>
+
           <div className="relative w-[400px] h-[400px] flex justify-center items-center">
             {/* Outer Circle: Top and Bottom */}
             <div className="orbit orbit-outer">
@@ -229,11 +220,10 @@ const Home = () => {
                     key={i}
                     className="orbit-item"
                     style={{ "--angle": `${i === 0 ? 0 : 180}deg` }} // top (0deg), bottom (180deg)
-                    onClick={()=>window.open(course.link, '_blank')}
                   >
-                    <span
-                      className={`orbit-text font-semibold cursor-pointer !text-[0.6rem] md:!text-[0.7rem] relative `}
-                      // onClick={()=>alert(text.path)}
+                    <a
+                      href={course.link}
+                      className={`orbit-text font-semibold cursor-pointer !text-[0.6rem] md:!text-[0.7rem] relative`}
                     >
                       <img
                         src={course.img}
@@ -241,7 +231,7 @@ const Home = () => {
                         alt=""
                       />
                       <span>{course.label}</span>
-                    </span>
+                    </a>
                   </div>
                 ))}
               </div>
@@ -255,11 +245,10 @@ const Home = () => {
                     key={i}
                     className="orbit-item"
                     style={{ "--angle": `${i === 0 ? 90 : 270}deg` }} // right (90deg), left (270deg)
-                    onClick={()=>window.open(course.link, '_blank')}
                   >
-                    <span
-                      className={`orbit-text cursor-pointer font-extrabold !text-[0.7rem]  flex justify-center items-center flex-col`}
-                      // onClick={()=>alert(text.path)}
+                    <a
+                      href={course.link}
+                      className={`orbit-text cursor-pointer font-extrabold !text-[0.7rem] flex justify-center items-center flex-col`}
                     >
                       <img
                         src={course.img}
@@ -267,13 +256,11 @@ const Home = () => {
                         alt=""
                       />
                       <span className="text-center">{course.label}</span>
-                    </span>
+                    </a>
                   </div>
                 ))}
               </div>
             </div>
-             
-             
 
             {/* Central Image */}
             <img
@@ -291,19 +278,24 @@ const Home = () => {
         </article>
 
         <article className=" w-full mt-[20px] flex justify-center items-center">
-          <span className="text-[1rem] md:text-[1.8rem] font-semibold text-center uppercase"
-          >
-            {
-              COURSE_HERO_1.split(" ").map((txt,idx)=>(
-                <span className="hover:text-red-500 hover:tracking-wider duration-300 mx-[5px] " key={idx}>{txt}</span>
-              ))
-            }
+          <span className="text-[1rem] md:text-[1.8rem] font-semibold text-center uppercase">
+            {COURSE_HERO_1.split(" ").map((txt, idx) => (
+              <span
+                className="hover:text-red-500 hover:tracking-wider duration-300 mx-[5px] "
+                key={idx}
+              >
+                {txt}
+              </span>
+            ))}
             <br />
-            {
-              COURSE_HERO_2.split(" ").map((txt,idx)=>(
-                <span className="hover:text-red-500 hover:tracking-wider duration-300 mx-[5px] " key={idx}>{txt}</span>
-              ))
-            }
+            {COURSE_HERO_2.split(" ").map((txt, idx) => (
+              <span
+                className="hover:text-red-500 hover:tracking-wider duration-300 mx-[5px] "
+                key={idx}
+              >
+                {txt}
+              </span>
+            ))}
           </span>
         </article>
 
@@ -315,29 +307,21 @@ const Home = () => {
             alt=""
           />
         </article>
-
-
-        
       </section>
 
+      <Testimonial />
 
-       <Testimonial/>
+      {/* <Testimonial1/> */}
 
-       {/* <Testimonial1/> */}
+      <TeamMembers />
 
+      <InfoSection1 />
 
-       <TeamMembers/>
+      <HiringPartners />
 
-       <InfoSection1/>
+      <Footer />
 
-       
-
-       <HiringPartners/>
-       
-       <Footer/>
-
-       {/* <PageFooter/> */}
-
+      {/* <PageFooter/> */}
 
       <AnimatePresence mode="wait">
         {openPromo && (
@@ -347,8 +331,13 @@ const Home = () => {
             exit={{ scale: 0.9, opacity: 0 }}
             className="fixed top-0 left-0 bg-black w-full z-[999] h-[100vh] "
           >
-             <span className="absolute top-2 right-2 z-[10] cursor-pointer text-white" onClick={handlePromoClose}><AiOutlineClose/></span>
-            <VedioPlayer url={spaceVedio}/>
+            <span
+              className="absolute top-2 right-2 z-[10] cursor-pointer text-white"
+              onClick={handlePromoClose}
+            >
+              <AiOutlineClose />
+            </span>
+            <VedioPlayer url={spaceVedio} />
           </motion.section>
         )}
       </AnimatePresence>
@@ -357,4 +346,3 @@ const Home = () => {
 };
 
 export default Home;
-

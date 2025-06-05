@@ -19,6 +19,11 @@ const menuItems = [
     label: "ABOUT US",
     path: "/about",
   },
+  {
+    key: "courses",
+    label: "COURSES",
+    path: "/courses",
+  },
   
 ];
 
@@ -70,9 +75,9 @@ const Navbar = () => {
               {item.label}
             </Link>
           ))}
-          <a className="underline-nav cursor-pointer" href="/#course-section">
+          {/* <a className="underline-nav cursor-pointer" href="/#course-section">
               Courses
-          </a>
+          </a> */}
 
           {menuItemsLink.map((item, idx) => (
             <div className="underline-nav cursor-pointer" key={item.key} onClick={()=>handleMenuItemLinkClick(item.path)}>
