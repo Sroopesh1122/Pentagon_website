@@ -130,7 +130,7 @@ const TeamMembers = () => {
             autoplay={{
               delay: 1500,
               disableOnInteraction: false,
-              pauseOnMouseEnter: false,
+              pauseOnMouseEnter: true,
             }}
             onReachEnd={(swiper) => {
               swiper.params.autoplay.reverseDirection = true;

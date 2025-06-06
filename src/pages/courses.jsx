@@ -110,13 +110,14 @@ const Courses = () => {
             <button className="flex gap-2 items-center px-6 py-2 rounded-full border border-black bg-white shadow hover:bg-black hover:text-white duration-200 text-xl font-bold">
               <span>COURSES</span>
               <span className="w-8 h-8 flex items-center justify-center bg-black rounded-full rotate-[-90deg]">
-                <img src={triangle} alt="triangle" className="w-5 h-5" />
+                <img src={triangle} alt="triangle" className="w-5 h-5 p-1" />
               </span>
             </button>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {COURSES.map((course) =>
               course.customComponent ? (
+                
                 <div
                   key={course.key}
                   className="col-span-1 md:col-span-2 lg:col-span-4"
@@ -124,53 +125,48 @@ const Courses = () => {
                   {course.customComponent}
                 </div>
               ) : (
-                <div
+                <a
                   key={course.key}
-                  className="bg-white rounded-2xl flex flex-col h-full hover:scale-[1.03] duration-200 border border-gray-200 shadow-sm hover:shadow-lg shadow-gray-600"
+                  href={course.link}
+                  target="_top"
+                  rel="noopener noreferrer"
+                  className="hover:text-red-500 duration-200"
                 >
-                  <div className="relative w-full h-48 flex items-center justify-center overflow-hidden rounded-t-2xl bg-gray-100">
-                    <img
-                      src={course.img}
-                      alt={course.label}
-                      className="object-contain w-full h-full p-6"
-                    />
-                  </div>
-                  <div className="flex-1 flex flex-col p-5">
-                    <h3 className="text-xl font-bold mb-3 text-black/90">
-                      <a
-                        href={course.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:text-red-500 duration-200"
-                      >
+                  <div
+                    className="bg-white rounded-2xl flex flex-col h-full hover:scale-[1.03] duration-200 border border-gray-200 shadow-sm hover:shadow-lg shadow-gray-600"
+                  >
+                    <div className="relative w-full h-48 flex items-center justify-center overflow-hidden rounded-t-2xl bg-gray-100">
+                      <img
+                        src={course.img}
+                        alt={course.label}
+                        className="object-contain w-full h-full p-6"
+                      />
+                    </div>
+                    <div className="flex-1 flex flex-col p-5">
+                      <h3 className="text-xl font-bold mb-3 text-black/90">
                         {course.label}
-                      </a>
-                    </h3>
-                    <ul className="list-disc pl-5 mb-4 text-[0.98rem] text-gray-700 space-y-1">
-                      {course.topics &&
-                        course.topics.map((topic, idx) => (
-                          <li key={idx}>{topic}</li>
-                        ))}
-                    </ul>
-                    <div className="flex items-center justify-between border-t pt-3 mt-auto">
-                      <div className="flex gap-1 text-yellow-400 text-lg">
-                        <i className="fa-sharp fa-solid fa-star" />
-                        <i className="fa-sharp fa-solid fa-star" />
-                        <i className="fa-sharp fa-solid fa-star" />
-                        <i className="fa-sharp fa-solid fa-star" />
-                        <i className="fa-sharp fa-solid fa-star text-gray-300" />
+                      </h3>
+                      <ul className="list-disc pl-5 mb-4 text-[0.98rem] text-gray-700 space-y-1">
+                        {course.topics &&
+                          course.topics.map((topic, idx) => (
+                            <li key={idx}>{topic}</li>
+                          ))}
+                      </ul>
+                      <div className="flex items-center justify-between border-t pt-3 mt-auto">
+                        <div className="flex gap-1 text-yellow-400 text-lg">
+                          <i className="fa-sharp fa-solid fa-star" />
+                          <i className="fa-sharp fa-solid fa-star" />
+                          <i className="fa-sharp fa-solid fa-star" />
+                          <i className="fa-sharp fa-solid fa-star" />
+                          <i className="fa-sharp fa-solid fa-star text-gray-300" />
+                        </div>
+                        <span className="text-red-500 font-semibold hover:underline">
+                          Explore
+                        </span>
                       </div>
-                      <a
-                        href={course.link}
-                        target="_top"
-                        rel="noopener noreferrer"
-                        className="text-red-500 font-semibold hover:underline"
-                      >
-                        Explore
-                      </a>
                     </div>
                   </div>
-                </div>
+                </a>
               )
             )}
           </div>

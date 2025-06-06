@@ -78,7 +78,7 @@ const Footer = () => {
          
         
 
-        <div className="w-full z-[4]  bg-[#1e1f21] absolute translate-y-[-60px] md:translate-y-[-100px] lg:translate-y-[-120px] xl:translate-y-[-180px]">
+        <div className="w-full z-[4] absolute translate-y-[-60px] md:translate-y-[-100px] lg:translate-y-[-120px] xl:translate-y-[-180px]">
            
       
           <div className="w-full">
