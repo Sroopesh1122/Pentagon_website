@@ -66,7 +66,7 @@ const TeamMembers = () => {
       key: 7,
       img: PavanSir,
       name: "Mr. Pavan S",
-      desc: "Technical Trainer",
+      desc: "Technical Trainer - Mern Stack",
       info: "4+ Years of experience with deep knowledge in Web Technologies, MERN, delivering practical and industry-relevant training.",
     },
     {

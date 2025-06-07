@@ -24,11 +24,9 @@ const menuItems = [
     label: "COURSES",
     path: "/courses",
   },
-  
 ];
 
-
-const menuItemsLink =[
+const menuItemsLink = [
   {
     key: "verifyCertificate",
     label: "Verify Certificate",
@@ -38,22 +36,20 @@ const menuItemsLink =[
     key: "LMS",
     label: "LMS Portal",
     path: "https://online.pentagonspace.in",
-  }
-]
-
+  },
+];
 
 const handleScrollTo = (location) => {
-    gsap.to(window, {
-      duration: 1,
-      scrollTo: location,
-      ease: "power2.inOut",
-    });
-  };
+  gsap.to(window, {
+    duration: 1,
+    scrollTo: location,
+    ease: "power2.inOut",
+  });
+};
 
-
- const handleMenuItemLinkClick=(link)=>{
-  window.open(link,"_blank");
- } 
+const handleMenuItemLinkClick = (link) => {
+  window.open(link, "_blank");
+};
 
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -68,10 +64,17 @@ const Navbar = () => {
           onClick={() => setNavbarOpen(true)}
         />
         <article className="hidden lg:flex justify-center items-center gap-5 uppercase font-[500] text-[0.9rem]">
-          
-
           {menuItems.map((item, idx) => (
-            <Link className="underline-nav" key={item.key} to={item.path}>
+            <Link
+              className="underline-nav"
+              key={item.key}
+              to={item.path}
+              onClick={() => {
+                if (item.key === "courses") {
+                  sessionStorage.setItem("showRocketAnimation", "yes");
+                }
+              }}
+            >
               {item.label}
             </Link>
           ))}
@@ -80,12 +83,14 @@ const Navbar = () => {
           </a> */}
 
           {menuItemsLink.map((item, idx) => (
-            <div className="underline-nav cursor-pointer" key={item.key} onClick={()=>handleMenuItemLinkClick(item.path)}>
+            <div
+              className="underline-nav cursor-pointer"
+              key={item.key}
+              onClick={() => handleMenuItemLinkClick(item.path)}
+            >
               {item.label}
             </div>
           ))}
-
-
         </article>
       </section>
 
@@ -112,6 +117,11 @@ const Navbar = () => {
                 className="underline-nav py-2 px-4 shadow rounded-2xl"
                 key={item.key}
                 to={item.path}
+                onClick={() => {
+                  if (item.key === "courses") {
+                    sessionStorage.setItem("showRocketAnimation", "yes");
+                  }
+                }}
               >
                 {item.label}
               </Link>
