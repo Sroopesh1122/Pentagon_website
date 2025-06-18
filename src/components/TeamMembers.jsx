@@ -2,6 +2,7 @@ import React from "react";
 import { GoArrowUpRight } from "react-icons/go";
 import SurajSir from "../assets/imgs/teamMembers/SurajSir.png";
 import SharathSir from "../assets/imgs/teamMembers/Sharath sir.png";
+import JohnSir from "../assets/imgs/teamMembers/John Milton.jpg";
 import KarthikSir from "../assets/imgs/teamMembers/karthik.jpg";
 import NihalSir from "../assets/imgs/teamMembers/Nihal.jpg";
 import PunithSir from "../assets/imgs/teamMembers/Punith.jpg";
@@ -64,19 +65,26 @@ const TeamMembers = () => {
     {
       key: 7,
       img: PavanSir,
-      name: "Mr. Pavan Kumar",
-      desc: "Technical Trainer",
+      name: "Mr. Pavan S",
+      desc: "Technical Trainer - Mern Stack",
       info: "4+ Years of experience with deep knowledge in Web Technologies, MERN, delivering practical and industry-relevant training.",
     },
     {
       key: 8,
+      img: JohnSir,
+      name: "Mr. John Milton M",
+      desc: "Technical Trainer - Cyber Security",
+      info: "Bringing 5+ years of experience in software development and a passion for teaching the next generation of developers.",
+    },
+    {
+      key: 9,
       img: NihalSir,
       name: "Mr. Nihal",
       desc: "Technical Trainer",
       info: "Committed to delivering quality technical education and supporting learners in mastering modern development tools and techniques.",
     },
     {
-      key: 9,
+      key: 10,
       img: ShivKumarSir,
       name: "Mr. Shiva Kumar Sir",
       desc: "Technical Trainer",
@@ -119,6 +127,19 @@ const TeamMembers = () => {
               dynamicMainBullets: 3,
             }}
             speed={500}
+            autoplay={{
+              delay: 1500,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            onReachEnd={(swiper) => {
+              swiper.params.autoplay.reverseDirection = true;
+              swiper.autoplay.start();
+            }}
+            onReachBeginning={(swiper) => {
+              swiper.params.autoplay.reverseDirection = false;
+              swiper.autoplay.start();
+            }}
             breakpoints={{
               1600: { slidesPerView: 3 },
               1200: { slidesPerView: 3 },
