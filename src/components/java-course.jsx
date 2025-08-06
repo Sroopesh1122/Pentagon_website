@@ -1,263 +1,208 @@
 import React from "react";
+import javaLogo from "../assets/imgs/java.png"; // Local Java logo import
 
-const JavaCourse = () => (
-  <section id="java-full-stack-details" className="bg-[#f7f7fa] py-0 md:py-8">
-    {/* Hero Banner */}
-    <div
-      className="relative w-full h-[320px] md:h-[400px] flex items-center justify-center bg-cover bg-center"
-      style={{
-        backgroundImage: `url('https://pentagonspace.in/assets/images/banner/banner1.jpg')`,
-      }}
-    >
-      <div className="absolute inset-0 bg-black/70" />
-      <div className="relative z-10 flex flex-col items-center text-center text-white px-4">
-        <img
-          src="https://pentagonspace.in/assets/images/course_logo/java/pngwing.com%20(1).png"
-          alt="Java Logo"
-          className="w-24 md:w-32 mb-4 drop-shadow-lg"
-        />
-        <h1 className="text-xl md:text-3xl font-extrabold mb-2 tracking-wider uppercase">
-          Java Full Stack Development
-        </h1>
-        <p className="text-base md:text-lg font-bold mb-4 max-w-2xl text-red-500 uppercase tracking-wide">
-          Code Your Way Up: Java Full Stack Developer Course
-        </p>
-        <p className="max-w-2xl text-sm md:text-base text-gray-200">
-          If you're looking for the best Java training program with{" "}
-          <span className="text-red-500 font-bold">
-            100% placement assistance
-          </span>{" "}
-          to become a master of Java Full Stack Development for any online
-          computing platform, this course is perfect for you. This comprehensive
-          training provides a strong foundation in the Java programming
-          language, widely used in software development.
-        </p>
-      </div>
-    </div>
+const JavaCourse = () => {
+  const handleDownload = () => {
+    const pdfUrl = "/java-full-stack-syllabus.pdf";
+    const link = document.createElement("a");
+    link.href = pdfUrl;
+    link.download = "Java-Full-Stack-Syllabus.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
-    {/* Breadcrumb */}
-    <div className="container mx-auto mt-4">
-      <div className="text-sm text-gray-700 flex gap-2 items-center">
-        <a href="/" className="hover:underline font-bold text-black">
-          Home
-        </a>
-        <span>/</span>
-        <a className="hover:underline font-bold text-black" href="/courses">
-            Courses
-        </a>
-        <span>/</span>
-        <span className="font-semibold text-red-500">
-          Full Stack Java Development
-        </span>
-      </div>
-    </div>
-
-    {/* Course Highlights */}
-    <div className="container mx-auto mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div className="bg-white rounded-xl shadow p-6 flex flex-col items-center border-2 border-black">
-        <span className="text-xl font-extrabold text-black mb-1">500+</span>
-        <span className="text-gray-800 font-semibold uppercase">
-          Course Hours
-        </span>
-      </div>
-      <div className="bg-white rounded-xl shadow p-6 flex flex-col items-center border-2 border-black">
-        <span className="text-xl font-extrabold text-black mb-1">
-          Offline & Online
-        </span>
-        <span className="text-gray-800 font-semibold uppercase">
-          Mode of Training
-        </span>
-      </div>
-      <div className="bg-white rounded-xl shadow p-6 flex flex-col items-center border-2 border-black">
-        <span className="text-xl font-extrabold text-black mb-1">Beginner</span>
-        <span className="text-gray-800 font-semibold uppercase">
-          Skill Level
-        </span>
-      </div>
-      <div className="bg-white rounded-xl shadow p-6 flex flex-col items-center border-2 border-black">
-        <span className="text-xl font-extrabold text-black mb-1">15,000+</span>
-        <span className="text-gray-800 font-semibold uppercase">Learners</span>
-      </div>
-    </div>
-
-    {/* Overview & Features */}
-    <div className="container mx-auto mt-12 grid grid-cols-1 md:grid-cols-2 gap-10">
-      <div>
-        <h2 className="text-2xl font-extrabold mb-4 text-black uppercase tracking-wide">
-          Advanced Java Full Stack Development Course
-        </h2>
-        <p className="mb-6 text-gray-800">
-          This Advanced Java Full Stack Development Course is designed to take
-          you from a beginner to an advanced level in Java. The course covers
-          essential concepts and skills, including Core Java 8, loops,
-          operators, arrays, constructors, and methods. Additionally, you will
-          gain hands-on experience with JUNIT and JDBC frameworks, preparing you
-          for real-world projects and challenges.
-        </p>
-        <h3 className="font-bold text-lg mb-2 text-red-500 uppercase">
-          Key Features
-        </h3>
-        <ul className="list-disc pl-5 space-y-1 text-gray-800">
-          <li>Over 500 hours of intensive training</li>
-          <li>Training by certified trainers</li>
-          <li>Career Guidance by Industry experts</li>
-          <li>Special programming classes</li>
-          <li>8 technical projects</li>
-          <li>Regular mock interviews/assessments</li>
-          <li>Includes interview Preparation module</li>
-          <li>100% Placement assistance</li>
-          <li>Interview-specific grooming sessions</li>
-          <li>World-class infrastructure</li>
-        </ul>
-      </div>
-      <div className="bg-white rounded-xl shadow p-6 border-2 border-black">
-        <h3 className="font-bold text-lg mb-2 text-red-500 uppercase">
-          Skills Covered
-        </h3>
-        <ul className="list-disc pl-5 space-y-1 text-gray-800 mb-6">
-          <li>Core Java and Java 8</li>
-          <li>J2EE</li>
-          <li>Spring Boot</li>
-          <li>Micro Services</li>
-          <li>Front End Technologies</li>
-          <li>React JS</li>
-          <li>SQL</li>
-          <li>Projects</li>
-        </ul>
-        <h3 className="font-bold text-lg mb-2 text-red-500 uppercase">
-          Languages & Tools Covered
-        </h3>
-        <div className="flex flex-wrap gap-3">
+  return (
+    <section id="java-full-stack-details" className="bg-white py-8">
+      {/* Hero Banner with Local Logo */}
+      <div
+        className="relative w-full h-[320px] md:h-[400px] flex items-center justify-center bg-cover bg-center"
+        style={{
+          backgroundImage: `url('https://pentagonspace.in/assets/images/banner/banner1.jpg')`,
+        }}
+      >
+        <div className="absolute inset-0 bg-black/70" />
+        <div className="relative z-10 flex flex-col items-center text-center text-white px-4 w-full max-w-[95%] md:max-w-4xl">
+          {/* Using local imported logo image */}
           <img
-            src="https://pentagonspace.in/assets/images/course_logo/java/pngwing.com%20(1).png"
-            alt="React"
-            className="w-10 h-10"
+            src={javaLogo}
+            alt="Java Logo"
+            className="w-24 md:w-32 mb-3 md:mb-4 drop-shadow-lg"
           />
-          <img
-            src="https://pentagonspace.in/assets/images/course_logo/java/J2EE.png"
-            alt="J2EE"
-            className="w-10 h-10"
-          />
-          <img
-            src="https://pentagonspace.in/assets/images/course_logo/java/HTML%20&%20CSS.png"
-            alt="HTML & CSS"
-            className="w-10 h-10"
-          />
-          <img
-            src="https://pentagonspace.in/assets/images/course_logo/java/JavaScript.png"
-            alt="JavaScript"
-            className="w-10 h-10"
-          />
-          <img
-            src="https://pentagonspace.in/assets/images/course_logo/java/React%20JS.png"
-            alt="React JS"
-            className="w-10 h-10"
-          />
-          <img
-            src="https://pentagonspace.in/assets/images/course_logo/java/J%20Unit%20Logo.png"
-            alt="JUNIT"
-            className="w-10 h-10"
-          />
-          <img
-            src="https://pentagonspace.in/assets/images/course_logo/java/AWS%20Logo.png"
-            alt="AWS"
-            className="w-10 h-10"
-          />
-          <img
-            src="https://pentagonspace.in/assets/images/course_logo/java/DEVOPS%20AWS%20logo.png"
-            alt="DevOps AWS"
-            className="w-10 h-10"
-          />
-          <img
-            src="https://pentagonspace.in/assets/images/course_logo/java/Dockers%20logo.png"
-            alt="Docker"
-            className="w-10 h-10"
-          />
-          <img
-            src="https://pentagonspace.in/assets/images/course_logo/java/Git%20&%20Git%20Hub.png"
-            alt="Git & GitHub"
-            className="w-10 h-10"
-          />
-          <img
-            src="https://pentagonspace.in/assets/images/course_logo/java/apache_kafka_vertical_logo_icon_169585.webp"
-            alt="Kafka"
-            className="w-10 h-10"
-          />
-          <img
-            src="https://pentagonspace.in/assets/images/course_logo/java/jenkins-logo.png"
-            alt="Jenkins"
-            className="w-10 h-10"
-          />
-          <img
-            src="https://pentagonspace.in/assets/images/course_logo/java/Jira_Logo.png"
-            alt="Jira"
-            className="w-10 h-10"
-          />
-          <img
-            src="https://pentagonspace.in/assets/images/course_logo/java/Kubernetes-Logo.png"
-            alt="Kubernetes"
-            className="w-10 h-10"
-          />
-          <img
-            src="https://pentagonspace.in/assets/images/course_logo/java/Log4j-png.webp"
-            alt="Log4j"
-            className="w-10 h-10"
-          />
-          <img
-            src="https://pentagonspace.in/assets/images/course_logo/java/Maven%20Logo.png"
-            alt="Maven"
-            className="w-10 h-10"
-          />
-          <img
-            src="https://pentagonspace.in/assets/images/course_logo/java/PL-SQL-Commands1.png"
-            alt="PL-SQL"
-            className="w-10 h-10"
-          />
-          <img
-            src="https://pentagonspace.in/assets/images/course_logo/java/sonarQube.png"
-            alt="SonarQube"
-            className="w-10 h-10"
-          />
-          <img
-            src="https://pentagonspace.in/assets/images/course_logo/java/Spring%20Boot.png"
-            alt="Spring Boot"
-            className="w-10 h-10"
-          />
-          <img
-            src="https://pentagonspace.in/assets/images/course_logo/java/Spring.png"
-            alt="Spring"
-            className="w-10 h-10"
-          />
-          <img
-            src="https://pentagonspace.in/assets/images/course_logo/java/SQL.png"
-            alt="SQL"
-            className="w-10 h-10"
-          />
+          <div className="w-full space-y-2 md:space-y-3">
+            <h1 className="text-2xl md:text-4xl font-bold tracking-wide px-2">
+              Java Full Stack Development
+            </h1>
+            <p className="text-base md:text-xl font-semibold text-red-400">
+              Code Your Way Up: Java Full Stack Developer Course
+            </p>
+            <p className="text-xs md:text-base text-gray-200 px-2 md:px-0 leading-relaxed">
+              Master Java Full Stack Development with our comprehensive training program featuring{" "}
+              <span className="text-red-400 font-semibold">
+                100% placement assistance
+              </span>.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
 
-    {/* CTA Section */}
-    <div className="container mx-auto mt-12 flex flex-col md:flex-row items-center justify-between gap-6 bg-black rounded-xl p-8 shadow-lg">
-      <div className="text-white text-xl font-semibold uppercase tracking-wide">
-        Ready to start your journey as a Java Full Stack Developer?
+      {/* Breadcrumb */}
+      <div className="container mx-auto px-4 mt-6">
+        <div className="text-sm text-gray-600 flex gap-2 items-center">
+          <a href="/" className="hover:underline hover:text-black">
+            Home
+          </a>
+          <span>/</span>
+          <a href="/courses" className="hover:underline hover:text-black">
+            Courses
+          </a>
+          <span>/</span>
+          <span className="text-red-500 font-medium">
+            Java Full Stack
+          </span>
+        </div>
       </div>
-      <div className="flex gap-4">
-        <a
-          href="#enroll"
-          className="bg-white text-black font-bold px-6 py-3 rounded-full shadow hover:bg-red-500 hover:text-white transition border-2 border-black"
-        >
-          Enroll Now
-        </a>
-        <a
-          href="#syllabus"
-          className="bg-red-500 text-white font-bold px-6 py-3 rounded-full shadow hover:bg-black hover:text-red-500 transition border-2 border-red-500"
-        >
-          Download Syllabus
-        </a>
+
+      {/* Course Highlights */}
+      <div className="container mx-auto px-4 mt-12">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-5">
+          {[
+            { value: "500+", label: "Course Hours" },
+            { value: "Hybrid", label: "Training Mode" },
+            { value: "Beginner", label: "Skill Level" },
+            { value: "15K+", label: "Learners" }
+          ].map((item, index) => (
+            <div 
+              key={index}
+              className="bg-white rounded-lg shadow-sm p-3 md:p-4 flex flex-col items-center border border-gray-200 hover:shadow-md transition-shadow"
+            >
+              <span className="text-lg md:text-xl font-bold text-gray-800">{item.value}</span>
+              <span className="text-xs md:text-sm text-gray-600 font-medium uppercase tracking-wider mt-1">
+                {item.label}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+
+      {/* Overview & Features */}
+      <div className="container mx-auto px-4 mt-12 md:mt-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10">
+          <div>
+            <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-gray-800">
+              Advanced Java Full Stack Development
+            </h2>
+            <p className="mb-4 md:mb-6 text-gray-700 leading-relaxed text-sm md:text-base">
+             This end-to-end training program transforms you from a Java novice into a skilled full-stack developer. You’ll master Core Java, JUnit, JDBC, Java EE, Spring Framework, Spring Boot, Microservices, Spring AI, and modern frontend development using React.js. Upon completion, you’ll have the expertise to develop scalable, enterprise-ready applications with cutting-edge Java technologies.
+            </p>
+            
+            <h3 className="font-bold text-base md:text-lg mb-2 md:mb-3 text-red-500">
+              Key Features
+            </h3>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3 text-gray-700 text-sm md:text-base">
+              {[
+                "500+ training hours",
+                "Certified trainers",
+                "Career guidance",
+                "8 real time projects",
+                "Mock interviews",
+                "Interview preparation",
+                "100% placement",
+                "Technical grooming",
+                "Modern infrastructure"
+              ].map((item, index) => (
+                <li key={index} className="flex items-start">
+                  <svg className="w-4 h-4 text-red-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Skills & Technologies */}
+          <div className="bg-white rounded-lg shadow-sm p-4 md:p-5 border border-gray-200">
+            <div className="space-y-4 md:space-y-5">
+              <div>
+                <h3 className="font-bold text-base md:text-lg mb-2 text-red-500">
+                  Skills Covered
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    "Core Java", "Java 8", "J2EE", "Spring Core", "Spring Boot","Spring Data JPA","REST APIs",
+                    "Microservices", "Frontend", "React", "SQL",
+                      
+                  ].map((skill, index) => (
+                    <span 
+                      key={index} 
+                      className="text-xs bg-gray-100 px-2.5 py-1 rounded-full text-gray-700"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h3 className="font-bold text-base md:text-lg mb-3 text-red-500">
+                  Technologies
+                </h3>
+                <div className="flex flex-wrap gap-3 items-center">
+                  {[
+                    { src: "https://pentagonspace.in/assets/images/course_logo/java/pngwing.com%20(1).png", alt: "Java" },
+                    { src: "https://pentagonspace.in/assets/images/course_logo/java/Spring%20Boot.png", alt: "Spring Boot" },
+                    { src: "https://pentagonspace.in/assets/images/course_logo/java/React%20JS.png", alt: "React" },
+                    { src: "https://pentagonspace.in/assets/images/course_logo/java/SQL.png", alt: "SQL" },
+                    { src: "https://pentagonspace.in/assets/images/course_logo/java/Dockers%20logo.png", alt: "Docker" },
+                    { src: "https://pentagonspace.in/assets/images/course_logo/java/Git%20&%20Git%20Hub.png", alt: "Git" },
+                    { src:  "https://pentagonspace.in/assets/images/course_logo/mern/HTML%20&%20CSS.png",alt:"Html Css" },
+                    { src: "https://pentagonspace.in/assets/images/course_logo/mern/Bootsrap.png",alt:"Bootstrap" },
+                    { src: "https://pentagonspace.in/assets/images/course_logo/java/JavaScript.png", alt: "JavaScript" },
+                    {src:  "https://www.wscubetech.com/blog/wp-content/uploads/2024/06/jira-1024x695.webp",alt:"Jira" },
+                    { src: "https://pentagonspace.in/assets/images/course_logo/software/Maven%20Logo.png",alt:"Maven" },
+                  ].map((tech, index) => (
+                    <img
+                      key={index}
+                      src={tech.src}
+                      alt={tech.alt}
+                      className="w-8 h-8 md:w-10 md:h-10 object-contain transition-transform hover:scale-110"
+                      title={tech.alt}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* CTA Section */}
+      <div className="container mx-auto px-4 mt-12 md:mt-16">
+        <div className="bg-white rounded-xl shadow-sm p-6 md:p-8 border border-gray-200">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6">
+            <div className="text-lg md:text-xl font-semibold text-gray-800 text-center md:text-left">
+              Ready to start your Java Full Stack journey?
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+              <a
+                href="#enroll"
+                className="bg-red-500 text-white font-medium px-5 py-2.5 md:px-6 md:py-3 rounded-lg shadow hover:bg-red-600 transition text-center text-sm md:text-base"
+              >
+                Enroll Now
+              </a>
+              <button
+                onClick={handleDownload}
+                className="bg-white text-red-500 font-medium px-5 py-2.5 md:px-6 md:py-3 rounded-lg shadow border border-red-500 hover:bg-red-50 transition text-center text-sm md:text-base"
+              >
+                Download Syllabus
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default JavaCourse;

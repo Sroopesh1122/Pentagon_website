@@ -31,27 +31,27 @@ const Home = () => {
   const COURSES = [
     {
       key: "java-full-stack",
-      label: "JAVA FULL STACK",
+      label: "",
       img: javaImg,
       link: "/java-full-stack",
     },
     {
       key: "python-full-stack",
-      label: "PYTHON FULL STACK",
+      label: "",
       img: pythonImg,
-      link: "/courses#python-full-stack",
+      link: "/python-full-stack",
     },
     {
       key: "mern-full-stack",
-      label: "MERN STACK",
+      label: "",
       img: mernImg,
-      link: "/courses#mern-stack",
+      link: "/mern-full-stack",
     },
     {
       key: "software-testing",
-      label: "SOFTWARE TESTING",
+      label: "",
       img: testingImg,
-      link: "/courses#software-testing",
+      link: "/software-testing",
     },
   ];
 
@@ -196,7 +196,7 @@ const Home = () => {
           </button>
         </article>
 
-        <article className="w-full relative mt-[100px]   flex justify-center items-center">
+        <article className="w-full relative mt-[-10px]   flex justify-center items-center">
           <button
             onClick={() => setPromoOpen(true)}
             className="px-[30px] into-btn absolute bottom-[30px] left-[2%]  md:left-[10%] lg:left-[25%] flex gap-[1px] justify-center items-center cursor-pointer rounded-sm py-1 text-2xl"
