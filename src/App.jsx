@@ -11,6 +11,9 @@ import Courses from "./pages/courses";
 import JavaFullStack from "./pages/JavaFullStack";
 import PythonFullStack from "./pages/PythonFullStack";
 import MernFullStack from "./pages/MernFullStack";
+import TermsAndConditions from "./pages/TermsAndConditions";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import ContactUs from "./pages/ContactUs";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -57,6 +60,9 @@ function App() {
           <Route path="python-full-stack" element={<PythonFullStack />} />
           <Route path="mern-full-stack" element={<MernFullStack />} />
           <Route path="software-testing" element={<SoftwareTestingPage />} />
+          <Route path="terms" element={<TermsAndConditions/>} />
+          <Route path="privacy" element={<PrivacyPolicy/>} />
+          <Route path="contact" element={<ContactUs/>} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -7,7 +7,6 @@ import person4 from "../assets/imgs/Layer7.png";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import appleIcon from "../assets/imgs/mac-os.png";
-import PageFooter from "./PageFooter";
 
 gsap.registerPlugin(ScrollTrigger);
 

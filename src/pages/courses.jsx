@@ -4,9 +4,10 @@ import javaImg from "../assets/imgs/java.png";
 import pythonImg from "../assets/imgs/PYTHON.png";
 import mernImg from "../assets/imgs/MERN.png";
 import testingImg from "../assets/imgs/TESTING.png";
-import triangle from "../assets/imgs/triangle.jpg";
 import corporateBuilding from "../assets/imgs/CORPORATE_BUILDING.png";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
+import { FiArrowRight } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 const COURSES = [
   {
@@ -18,8 +19,8 @@ const COURSES = [
       "Core Java",
       "Advanced Java",
       "DSA",
-      "Spring core,Spring Boot,MicroServices",
-      "Spring Ai",
+      "Spring core, Spring Boot, MicroServices",
+      "Spring AI",
       "Front End Technologies",
       "React JS",
       "SQL",
@@ -28,6 +29,7 @@ const COURSES = [
       "PostMan, Swagger",
       "Real time Projects",
     ],
+    badge: "",
   },
   {
     key: "python-full-stack",
@@ -44,6 +46,7 @@ const COURSES = [
       "SQL",
       "Projects",
     ],
+    badge: "",
   },
   {
     key: "mern-stack",
@@ -59,6 +62,7 @@ const COURSES = [
       "Git & GitHub, Figma, & Mongoose",
       "Projects",
     ],
+    badge: "",
   },
   {
     key: "software-testing",
@@ -75,14 +79,17 @@ const COURSES = [
       "Database",
       "Projects",
     ],
+    badge: "",
   },
 ];
 
 const Courses = () => {
+  const navigate = useNavigate();
   const initialShow =
     sessionStorage.getItem("showRocketAnimation") === "yes" ? true : false;
   const [showAnimation, setShowAnimation] = useState(initialShow);
   const [pendingNav, setPendingNav] = useState(null);
+  const [hoveredCard, setHoveredCard] = useState(null);
 
   React.useEffect(() => {
     if (showAnimation) {
@@ -93,7 +100,7 @@ const Courses = () => {
   const handleAnimationComplete = () => {
     setShowAnimation(false);
     if (pendingNav) {
-      window.location.href = pendingNav;
+      navigate(pendingNav);
     }
   };
 
@@ -105,85 +112,122 @@ const Courses = () => {
   };
 
   return (
-    <main className="w-full min-h-[100vh] bg-white relative overflow-x-hidden">
+    <main className="w-full min-h-screen bg-gray-50 relative overflow-x-hidden">
       {showAnimation && (
         <RocketBurstAnimation onComplete={handleAnimationComplete} />
       )}
       
-      {/* Banner */}
-      <section
-        className="w-full bg-cover bg-center flex items-center justify-center min-h-[220px] md:min-h-[280px] relative"
-        style={{ backgroundImage: `url(${corporateBuilding})` }}
-      >
-        <div className="absolute inset-0 bg-black/40 z-0" />
-        <div className="container mx-auto z-10 relative flex flex-col items-center justify-center py-10 px-4">
-          <h1 className="text-3xl md:text-4xl font-bold text-white drop-shadow-lg text-center">
-            Our Courses
+      {/* Hero Banner */}
+      <section className="relative w-full h-64 md:h-80 lg:h-96 bg-gray-900 overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-70"
+          style={{ backgroundImage: `url(${corporateBuilding})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 to-gray-900/40" />
+        
+        <div className="container mx-auto relative z-10 h-full flex flex-col items-center justify-center px-4 text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+            Our <span className="text-red-500">Courses</span>
           </h1>
-          <ul className="flex gap-2 mt-4 text-white/80 text-sm md:text-base">
-            <li>
-              <a href="/" className="hover:underline">
-                Home
-              </a>
-            </li>
-            <li>
-              <span className="mx-2">/</span>
-            </li>
-            <li>Courses</li>
-          </ul>
+          <p className="text-lg md:text-xl text-gray-300 max-w-2xl mb-6">
+            Master in-demand technologies with our industry-aligned programs
+          </p>
+          <nav className="flex items-center text-sm text-gray-300">
+            <a href="/" className="hover:text-white hover:underline transition-colors">
+              Home
+            </a>
+            <span className="mx-2">/</span>
+            <span className="text-white">Courses</span>
+          </nav>
         </div>
       </section>
 
       {/* Courses Section */}
       {!showAnimation && (
-        <section className="w-full py-10 px-4 sm:px-6 bg-white">
-          <div className="container mx-auto max-w-6xl">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+          <div className="container mx-auto max-w-7xl">
+            <div className="text-center mb-16">
+              <span className="inline-block px-4 py-1 text-sm font-medium text-red-500 bg-red-50 rounded-full mb-3">
+                LEARN WITH EXPERTS
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Choose Your Career Path
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Our comprehensive courses are designed to transform beginners into industry-ready professionals.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {COURSES.map((course) => (
                 <div 
-                  key={course.key} 
-                  className="group transition-all duration-200 hover:-translate-y-1"
+                  key={course.key}
+                  className="relative group"
+                  onMouseEnter={() => setHoveredCard(course.key)}
+                  onMouseLeave={() => setHoveredCard(null)}
                 >
+                  {course.badge && (
+                    <span className="absolute -top-3 -right-3 z-10 px-3 py-1 text-xs font-bold text-white bg-red-500 rounded-full shadow-lg">
+                      {course.badge}
+                    </span>
+                  )}
+                  
+                  <div className={`absolute inset-0 bg-gradient-to-br from-red-500/10 to-red-500/30 rounded-xl transition-all duration-500 ${hoveredCard === course.key ? 'opacity-100' : 'opacity-0'}`} />
+                  
                   <a
                     href={course.link}
-                    target="_top"
-                    rel="noopener noreferrer"
                     onClick={(e) => handleCourseClick(e, course.link)}
-                    className="block h-full"
+                    className={`block h-full bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 ${hoveredCard === course.key ? 'transform -translate-y-2' : ''}`}
                   >
-                    <div className="bg-white rounded-xl flex flex-col h-full border border-gray-200 overflow-hidden shadow-sm hover:shadow-lg">
-                      <div className="relative w-full h-40 flex items-center justify-center bg-white p-4">
-                        <img
-                          src={course.img}
-                          alt={course.label}
-                          className="object-contain w-full h-full transition-transform duration-200 group-hover:scale-[1.03]"
-                        />
-                      </div>
-                      <div className="flex-1 flex flex-col p-5">
-                        <h3 className="text-lg font-bold mb-3 text-gray-800 text-center">
-                          {course.label}
-                        </h3>
-                        <ul className="list-none space-y-2 mb-4 text-sm text-gray-600">
-                          {course.topics.map((topic, idx) => (
-                            <li key={idx} className="flex items-start">
-                              <IoMdCheckmarkCircleOutline className="flex-shrink-0 mt-0.5 mr-2 text-red-500" />
-                              <span>{topic}</span>
-                            </li>
-                          ))}
-                        </ul>
-                        <div className="mt-auto pt-3 flex justify-end">
-                          <span className="inline-flex items-center text-red-500 font-semibold hover:underline">
-                            Explore Course
-                            <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                            </svg>
-                          </span>
-                        </div>
+                    <div className="relative w-full h-48 bg-gray-50 flex items-center justify-center p-6">
+                      <img
+                        src={course.img}
+                        alt={course.label}
+                        className={`object-contain w-full h-full transition-transform duration-500 ${hoveredCard === course.key ? 'scale-110' : 'scale-100'}`}
+                      />
+                    </div>
+                    
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-gray-900 mb-4">
+                        {course.label}
+                      </h3>
+                      
+                      <ul className="space-y-3 mb-6">
+                        {course.topics.slice(0, 4).map((topic, idx) => (
+                          <li key={idx} className="flex items-start">
+                            <IoMdCheckmarkCircleOutline className="flex-shrink-0 mt-1 mr-2 text-red-500" />
+                            <span className="text-gray-700">{topic}</span>
+                          </li>
+                        ))}
+                        {course.topics.length > 4 && (
+                          <li className="text-sm text-gray-500">
+                            + {course.topics.length - 4} more topics
+                          </li>
+                        )}
+                      </ul>
+                      
+                      <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                        <span className="inline-flex items-center text-red-500 font-medium hover:underline">
+                          Explore Course
+                          <FiArrowRight className="ml-2" />
+                        </span>
+                        <span className="text-xs font-medium px-2 py-1 bg-gray-100 text-gray-600 rounded">
+                          {course.topics.length} Modules
+                        </span>
                       </div>
                     </div>
                   </a>
                 </div>
               ))}
+            </div>
+
+            <div className="mt-16 text-center">
+              <p className="text-gray-600 mb-6">
+                Not sure which course is right for you?
+              </p>
+              <button className="px-6 py-3 bg-red-500 hover:bg-red-600 text-white font-medium rounded-lg shadow-md transition-colors duration-300">
+                Talk to Our Counselor
+              </button>
             </div>
           </div>
         </section>

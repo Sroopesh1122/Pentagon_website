@@ -19,6 +19,8 @@ import { AiOutlineClose } from "react-icons/ai";
 import { FaPlay } from "react-icons/fa";
 import TeamMembers from "../components/TeamMembers";
 import PageFooter from "../components/PageFooter";
+import DevelopmentCenters from "../components/DevelopmentCenters";
+import Elearning from "../components/Elearning";
 
 const Home = () => {
   const TEXT = [
@@ -211,7 +213,7 @@ const Home = () => {
             </div>
           </button>
 
-          <div className="relative w-[400px] h-[400px] flex justify-center items-center">
+          <div className="relative w-[400px] h-[400px] flex justify-center items-center mt-[50px]">
             {/* Outer Circle: Top and Bottom */}
             <div className="orbit orbit-outer">
               <div className="orbit-content">
@@ -271,11 +273,11 @@ const Home = () => {
           </div>
         </article>
 
-        <article className=" w-full mt-[20px] md:mt-[50px] flex justify-center items-center">
+        {/* <article className=" w-full mt-[20px] md:mt-[50px] flex justify-center items-center">
           <span className="px-6 hover:tracking-widest duration-300 cursor-pointer hover:bg-white hover:text-black border border-transparent hover:border-black tracking-wider text-xl md:text-2xl uppercase py-1 rounded-full bg-black text-white font-semibold">
             Pay fees
           </span>
-        </article>
+        </article> */}
 
         <article className=" w-full mt-[20px] flex justify-center items-center">
           <span className="text-[1rem] md:text-[1.8rem] font-semibold text-center uppercase">
@@ -313,7 +315,11 @@ const Home = () => {
 
       {/* <Testimonial1/> */}
 
+      <DevelopmentCenters/>
+
       <TeamMembers />
+
+      <Elearning/>
 
       <InfoSection1 />
 

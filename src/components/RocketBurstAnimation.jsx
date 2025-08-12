@@ -11,7 +11,7 @@ const RocketBurstAnimation = ({ onComplete }) => {
     // Call onComplete after a short delay to allow fade-out
     const completeTimer = setTimeout(() => {
       if (onComplete) onComplete();
-    }, 1000);
+    }, 900);
     return () => {
       clearTimeout(closeSpaceTimer);
       clearTimeout(completeTimer);
