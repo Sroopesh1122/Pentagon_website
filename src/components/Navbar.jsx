@@ -39,13 +39,6 @@ const menuItemsLink = [
   },
 ];
 
-const handleScrollTo = (location) => {
-  gsap.to(window, {
-    duration: 1,
-    scrollTo: location,
-    ease: "power2.inOut",
-  });
-};
 
 const handleMenuItemLinkClick = (link) => {
   window.open(link, "_blank");
@@ -78,9 +71,6 @@ const Navbar = () => {
               {item.label}
             </Link>
           ))}
-          {/* <a className="underline-nav cursor-pointer" href="/#course-section">
-              Courses
-          </a> */}
 
           {menuItemsLink.map((item, idx) => (
             <div
@@ -130,8 +120,6 @@ const Navbar = () => {
             <button className="py-2 px-4 shadow rounded-2xl">
               DOWNLOAD APP
             </button>
-
-            <button className="py-2 px-4 shadow rounded-2xl">LOGIN</button>
           </div>
         </article>
       </section>

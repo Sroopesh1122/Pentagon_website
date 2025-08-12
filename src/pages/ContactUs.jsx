@@ -1,5 +1,7 @@
+import axios from "axios";
 import React, { useState } from "react";
-import { FaPaperPlane, FaPhone, FaMapMarkerAlt, FaEnvelope, FaChevronDown } from "react-icons/fa";
+import { FaPaperPlane, FaPhone, FaMapMarkerAlt, FaEnvelope, FaChevronDown, FaCheck, FaTimes, FaSpinner } from "react-icons/fa";
+import { SERVER_URL } from "../utils/server";
 
 const ContactUs = () => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -8,6 +10,11 @@ const ContactUs = () => {
     email: "",
     phone: "",
     message: ""
+  });
+  const [status, setStatus] = useState({
+    loading: false,
+    success: false,
+    error: null
   });
 
   const handleChange = (e) => {
@@ -18,17 +25,35 @@ const ContactUs = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-    alert("Thank you for your message! We'll get back to you soon.");
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      message: ""
-    });
+    setStatus({ loading: true, success: false, error: null });
+
+    try {
+      const response = await axios.post(`${SERVER_URL}/enquiry/public/`, formData);
+      if (response.data) {
+        setStatus({ loading: false, success: true, error: null });
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          message: ""
+        });
+        
+        // Auto-hide success message after 5 seconds
+        setTimeout(() => {
+          setStatus(prev => ({ ...prev, success: false }));
+        }, 5000);
+      }
+    } catch (error) {
+      const message = error?.response?.data?.error || "Something went wrong. Please try again later.";
+      setStatus({ loading: false, success: false, error: message });
+      
+      // Auto-hide error message after 5 seconds
+      setTimeout(() => {
+        setStatus(prev => ({ ...prev, error: null }));
+      }, 5000);
+    }
   };
 
   const toggleFAQ = (index) => {
@@ -38,7 +63,7 @@ const ContactUs = () => {
   const faqs = [
     {
       question: "What courses do you offer?",
-      answer: "We offer a wide range of courses in cutting-edge technologies including Data Science, Full Stack Development, Cloud Computing, AI/ML, and more. Visit our Courses page for detailed information."
+      answer: "We offer a wide range of courses in cutting-edge technologies including Java Full Stack Development with Ai,Python Full Stack Development with Ai,Mern Full Stack Development with Ai,Software Testing and more. Visit our Courses page for detailed information."
     },
     {
       question: "How can I enroll in a course?",
@@ -60,8 +85,53 @@ const ContactUs = () => {
 
   return (
     <div className="bg-white min-h-screen">
+      {/* Notification System */}
+      <div className="fixed top-4 right-4 z-50 space-y-3 w-full max-w-md">
+        {/* Success Notification */}
+        {status.success && (
+          <div className="animate-slideDown bg-green-50 border border-green-200 rounded-lg shadow-lg p-4 flex items-start gap-3">
+            <div className="bg-green-100 p-2 rounded-full">
+              <FaCheck className="text-green-600" />
+            </div>
+            <div className="flex-1">
+              <h3 className="font-medium text-green-800">Message Sent Successfully!</h3>
+              <p className="text-sm text-green-600 mt-1">
+                Thank you for contacting us. We'll get back to you soon.
+              </p>
+            </div>
+            <button 
+              onClick={() => setStatus(prev => ({ ...prev, success: false }))}
+              className="text-green-400 hover:text-green-600"
+            >
+              <FaTimes />
+            </button>
+          </div>
+        )}
+
+        {/* Error Notification */}
+        {status.error && (
+          <div className="animate-slideDown bg-red-50 border border-red-200 rounded-lg shadow-lg p-4 flex items-start gap-3">
+            <div className="bg-red-100 p-2 rounded-full">
+              <FaTimes className="text-red-600" />
+            </div>
+            <div className="flex-1">
+              <h3 className="font-medium text-red-800">Error Sending Message</h3>
+              <p className="text-sm text-red-600 mt-1">
+                {status.error}
+              </p>
+            </div>
+            <button 
+              onClick={() => setStatus(prev => ({ ...prev, error: null }))}
+              className="text-red-400 hover:text-red-600"
+            >
+              <FaTimes />
+            </button>
+          </div>
+        )}
+      </div>
+
       {/* Hero Section */}
-      <section className="w-full py-12 bg-black text-white animate-fadeIn">
+      <section className="w-full py-12 bg-gradient-to-r from-black to-gray-900 text-white animate-fadeIn">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-slideDown">Contact Us</h1>
           <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto animate-slideUp">
@@ -146,10 +216,24 @@ const ContactUs = () => {
 
                 <button
                   type="submit"
-                  className="w-full bg-rose-500 text-white py-3 px-6 rounded-lg font-semibold hover:bg-rose-600 transition-all duration-300 flex items-center justify-center gap-2 transform hover:scale-[1.02] active:scale-[0.98] animate-slideIn delay-300"
+                  disabled={status.loading}
+                  className={`w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 transform hover:scale-[1.02] active:scale-[0.98] animate-slideIn delay-300 ${
+                    status.loading
+                      ? "bg-gray-400 cursor-not-allowed"
+                      : "bg-rose-500 hover:bg-rose-600 text-white"
+                  }`}
                 >
-                  <FaPaperPlane />
-                  Send Message
+                  {status.loading ? (
+                    <>
+                      <FaSpinner className="animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <FaPaperPlane />
+                      Send Message
+                    </>
+                  )}
                 </button>
               </form>
             </div>
@@ -166,11 +250,7 @@ const ContactUs = () => {
                     >
                       <span>{faq.question}</span>
                       <span className={`transition-transform duration-200 ${activeIndex === index ? 'rotate-180 text-rose-500' : ''}`}>
-                        {/* {activeIndex === index ? (
-                          <FaChevronUp className="text-rose-500" />
-                        ) : ( */}
-                          <FaChevronDown className="text-rose-500" />
-                        {/* )} */}
+                        <FaChevronDown className="text-rose-500" />
                       </span>
                     </button>
 
@@ -200,6 +280,14 @@ const ContactUs = () => {
                   <div>
                     <h3 className="font-semibold text-gray-800">Our Location</h3>
                     <p className="text-gray-600">765, 8th Cross Rd, Govindaraja Nagar Ward, MC Layout, Vijayanagar, Bengaluru, Karnataka 560040</p>
+                    <a 
+                      href="https://maps.google.com/?q=765, 8th Cross Rd, Govindaraja Nagar Ward, MC Layout, Vijayanagar, Bengaluru, Karnataka 560040"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block mt-2 text-rose-500 hover:text-rose-600 text-sm font-medium"
+                    >
+                      View on Map →
+                    </a>
                   </div>
                 </div>
 
@@ -211,6 +299,12 @@ const ContactUs = () => {
                     <h3 className="font-semibold text-gray-800">Phone Number</h3>
                     <p className="text-gray-600">+91 9901066669</p>
                     <p className="text-gray-600">+91 82962 22234</p>
+                    <a 
+                      href="tel:+919901066669"
+                      className="inline-block mt-2 bg-rose-500 text-white px-3 py-1 rounded-md text-sm font-medium hover:bg-rose-600 transition-colors"
+                    >
+                      Call Now
+                    </a>
                   </div>
                 </div>
 
@@ -221,6 +315,12 @@ const ContactUs = () => {
                   <div>
                     <h3 className="font-semibold text-gray-800">Email Address</h3>
                     <p className="text-gray-600">info@pentagonspace.in</p>
+                    <a 
+                      href="mailto:info@pentagonspace.in"
+                      className="inline-block mt-2 bg-gray-200 text-gray-800 px-3 py-1 rounded-md text-sm font-medium hover:bg-gray-300 transition-colors"
+                    >
+                      Email Us
+                    </a>
                   </div>
                 </div>
               </div>
@@ -228,13 +328,13 @@ const ContactUs = () => {
               <div className="mt-8">
                 <h3 className="font-semibold text-gray-800 mb-3">Working Hours</h3>
                 <ul className="space-y-2 text-gray-600">
-                  <li className="flex justify-between">
-                    <span>Monday - Saturday</span>
+                  <li className="flex justify-between py-2 border-b border-gray-200">
+                    <span className="font-medium">Monday - Saturday</span>
                     <span>9:00 AM - 6:00 PM</span>
                   </li>
                   
-                  <li className="flex justify-between">
-                    <span>Sunday</span>
+                  <li className="flex justify-between py-2">
+                    <span className="font-medium">Sunday</span>
                     <span className="text-rose-500">Closed</span>
                   </li>
                 </ul>
@@ -266,6 +366,10 @@ const ContactUs = () => {
           from { transform: translateX(20px); opacity: 0; }
           to { transform: translateX(0); opacity: 1; }
         }
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
         .animate-fadeIn {
           animation: fadeIn 0.5s ease-out forwards;
         }
@@ -280,6 +384,9 @@ const ContactUs = () => {
         }
         .animate-slideInRight {
           animation: slideInRight 0.5s ease-out forwards;
+        }
+        .animate-spin {
+          animation: spin 1s linear infinite;
         }
         .delay-100 {
           animation-delay: 0.1s;
