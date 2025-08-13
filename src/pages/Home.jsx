@@ -314,9 +314,9 @@ const Home = () => {
       <Testimonial />
 
       {/* <Testimonial1/> */}
-
-      <DevelopmentCenters/>
-
+<section id="development-centers">
+  <DevelopmentCenters />
+</section>
       <TeamMembers />
 
       <Elearning/>

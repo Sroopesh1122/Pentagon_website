@@ -66,7 +66,7 @@ const Elearning = () => {
             {[
               {
                 icon: <FaPlay className="text-4xl text-red-500" />,
-                title: "1000+ Hours Content",
+                title: "500+ Hours Content",
                 description: "Comprehensive learning materials with video lectures"
               },
               {

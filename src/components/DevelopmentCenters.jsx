@@ -7,7 +7,7 @@ import { btmGallery, vijaynagarGallery } from '../utils/Gallery';
 const DevelopmentCenters = () => {
   const [selectedCenter, setSelectedCenter] = useState(null);
   const [showGallery, setShowGallery] = useState(false);
-  const [selectedImgIndex, setSelectedImgIndex] = useState(0); // ✅ track selected image
+  const [selectedImgIndex, setSelectedImgIndex] = useState(0);
 
   const centers = [
     {
@@ -32,7 +32,7 @@ const DevelopmentCenters = () => {
 
   const openGallery = (center) => {
     setSelectedCenter(center);
-    setSelectedImgIndex(0); // default to first image
+    setSelectedImgIndex(0);
     setShowGallery(true);
     document.body.style.overflow = 'hidden';
   };
@@ -51,54 +51,56 @@ const DevelopmentCenters = () => {
           </h2>
         </div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {centers.map((center) => (
-            <div key={center.id} className="bg-white border border-slate-200 rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 relative">
-              <div className="h-[250px] overflow-hidden">
-                <img
-                  className="w-full h-full object-fill transform hover:scale-105 transition-transform duration-500"
-                  src={center.image}
-                  alt={center.name}
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{center.name}</h3>
+        {/* Modified Cards Container */}
+        <div className="flex justify-center">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 max-w-4xl">
+            {centers.map((center) => (
+              <div key={center.id} className="bg-white border border-slate-200 rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 relative">
+                <div className="h-[250px] overflow-hidden">
+                  <img
+                    className="w-full h-full object-fill transform hover:scale-105 transition-transform duration-500"
+                    src={center.image}
+                    alt={center.name}
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{center.name}</h3>
 
-                <div className="space-y-3 mt-4">
-                  <div className="flex items-start">
-                    <FaMapMarkerAlt className="flex-shrink-0 h-5 w-5 text-red-500 mt-1" />
-                    <p className="ml-3 text-base text-gray-600">{center.address}</p>
+                  <div className="space-y-3 mt-4">
+                    <div className="flex items-start">
+                      <FaMapMarkerAlt className="flex-shrink-0 h-5 w-5 text-red-500 mt-1" />
+                      <p className="ml-3 text-base text-gray-600">{center.address}</p>
+                    </div>
+                    <div className="flex items-center">
+                      <FaPhone className="flex-shrink-0 h-5 w-5 text-red-500" />
+                      <a href={`tel:${center.mobile}`} className="ml-3 text-base text-gray-600 hover:text-red-600 transition-colors">
+                        {center.mobile}
+                      </a>
+                    </div>
+                    <div className="flex items-center">
+                      <FaEnvelope className="flex-shrink-0 h-5 w-5 text-red-500" />
+                      <a href={`mailto:${center.email}`} className="ml-3 text-base text-gray-600 hover:text-red-600 transition-colors">
+                        {center.email}
+                      </a>
+                    </div>
                   </div>
-                  <div className="flex items-center">
-                    <FaPhone className="flex-shrink-0 h-5 w-5 text-red-500" />
-                    <a href={`tel:${center.mobile}`} className="ml-3 text-base text-gray-600 hover:text-red-600 transition-colors">
-                      {center.mobile}
-                    </a>
-                  </div>
-                  <div className="flex items-center">
-                    <FaEnvelope className="flex-shrink-0 h-5 w-5 text-red-500" />
-                    <a href={`mailto:${center.email}`} className="ml-3 text-base text-gray-600 hover:text-red-600 transition-colors">
-                      {center.email}
-                    </a>
+
+                  <div className='flex justify-end items-center'>
+                    <button
+                      onClick={() => openGallery(center)}
+                      className="mt-4 cursor-pointer text-red-500 hover:text-red-600 transition-colors duration-300"
+                    >
+                      View Gallery
+                    </button>
                   </div>
                 </div>
-
-                <div className='flex justify-end items-center'>
-                  <button
-                    onClick={() => openGallery(center)}
-                    className="mt-4 cursor-pointer text-red-500 hover:text-red-600 transition-colors duration-300"
-                  >
-                    View Gallery
-                  </button>
-                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Gallery Modal */}
+      {/* Gallery Modal - unchanged */}
       {showGallery && selectedCenter && (
         <div className="fixed inset-0 bg-black/75 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="relative max-w-4xl w-full bg-white rounded-lg overflow-hidden">
@@ -112,7 +114,7 @@ const DevelopmentCenters = () => {
             <div className="h-[70vh] overflow-hidden">
               <img
                 className="w-full h-full object-contain"
-                src={selectedCenter.gallery[selectedImgIndex]} // ✅ show selected image
+                src={selectedCenter.gallery[selectedImgIndex]}
                 alt={selectedCenter.name}
               />
             </div>
@@ -128,7 +130,7 @@ const DevelopmentCenters = () => {
                     className={`h-20 w-20 object-cover rounded cursor-pointer hover:opacity-80 ${
                       index === selectedImgIndex ? 'ring-2 ring-red-500' : ''
                     }`}
-                    onClick={() => setSelectedImgIndex(index)} // ✅ just change index
+                    onClick={() => setSelectedImgIndex(index)}
                   />
                 ))}
               </div>

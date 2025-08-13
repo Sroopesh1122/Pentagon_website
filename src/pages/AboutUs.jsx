@@ -78,17 +78,17 @@ const AboutUs = () => {
           <h2 className="text-3xl font-bold mb-12 text-center text-black">Our Impact</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white p-8 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow border border-gray-200">
-              <div className="text-5xl font-bold text-rose-500 mb-4">50,000+</div>
+              <div className="text-5xl font-bold text-rose-500 mb-4">60,000+</div>
               <h3 className="text-xl font-semibold mb-2">Upskilled Professionals</h3>
               <p className="text-gray-600">Young job aspirants empowered with new skills</p>
             </div>
             <div className="bg-white p-8 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow border border-gray-200">
-              <div className="text-5xl font-bold text-rose-500 mb-4">2,500+</div>
+              <div className="text-5xl font-bold text-rose-500 mb-4">4,800+</div>
               <h3 className="text-xl font-semibold mb-2">Partner Companies</h3>
               <p className="text-gray-600">Software companies connected with top talent</p>
             </div>
             <div className="bg-white p-8 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow border border-gray-200">
-              <div className="text-5xl font-bold text-rose-500 mb-4">25,000+</div>
+              <div className="text-5xl font-bold text-rose-500 mb-4">15,000+</div>
               <h3 className="text-xl font-semibold mb-2">Career Transformations</h3>
               <p className="text-gray-600">Individuals who've advanced their careers</p>
             </div>
