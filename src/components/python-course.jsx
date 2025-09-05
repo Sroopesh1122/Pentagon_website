@@ -184,19 +184,20 @@ const PythonCourse = () => {
                 <div className="grid grid-cols-4 gap-4">
                   {[
                     {
-                      src: "https://pentagonspace.in/assets/images/courses/python_icon.png",
+                      src: "https://logos-download.com/wp-content/uploads/2016/10/Python_logo_icon.png",
                       alt: "Python",
                     },
                     {
-                      src: "https://pentagonspace.in/assets/images/courses/django.jpg",
+                      src: "https://miro.medium.com/v2/resize:fit:400/1*3N0QfS0dJswEpVyelRXLsQ.png",
                       alt: "Django",
                     },
+ 
                     {
-                      src: "https://pentagonspace.in/assets/images/courses/React%20JS.png",
+                      src: "https://cdn.freebiesupply.com/logos/large/2x/react-1-logo-png-transparent.png",
                       alt: "React",
                     },
                     {
-                      src: "https://pentagonspace.in/assets/images/course_logo/mern/JavaScript.png",
+                      src: "https://www.freepnglogos.com/uploads/javascript-png/javascript-logo-hq-png-1.png",
                       alt: "JavaScript",
                     },
                     {
@@ -204,19 +205,19 @@ const PythonCourse = () => {
                       alt: "Pandas",
                     },
                     {
-                      src: "https://pentagonspace.in/assets/images/courses/Numpy%20Pandas.png",
+                      src: "https://ih1.redbubble.net/image.1949505410.1830/poster,504x498,f8f8f8-pad,600x600,f8f8f8.jpg",
                       alt: "NumPy",
                     },
                     {
-                      src: "https://pentagonspace.in/assets/images/course_logo/mern/HTML%20&%20CSS.png",
+                      src: "https://tse4.mm.bing.net/th/id/OIP.K0bK7OGYkF9YXIc608wZ0gHaE8?rs=1&pid=ImgDetMain&o=7&rm=3ssss",
                       alt: "HTML & CSS",
                     },
                     {
-                      src: "https://pentagonspace.in/assets/images/course_logo/mern/Bootsrap.png",
+                      src: "https://thafd.bing.com/th/id/OIP.dphNSJAWu3jIw0fmYbuOlAHaHa?w=176&h=180&c=7&r=0&o=7&pid=1.7&rm=3",
                       alt: "Bootstrap",
                     },
                     {
-                      src: "https://pentagonspace.in/assets/images/course_logo/mern/Git%20&%20Git%20Hub.png",
+                      src: "https://i.pinimg.com/originals/ac/b3/51/acb3513e5a2664ba59bec11222863a40.jpg",
                       alt: "Git & GitHub",
                     },
                     {

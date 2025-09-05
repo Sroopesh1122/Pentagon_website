@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import learnImg from "../assets/imgs/PageLearn.png";
 import person1 from "../assets/imgs/Layer4.png";
 import person2 from "../assets/imgs/Layer5.png";
@@ -7,6 +6,7 @@ import person4 from "../assets/imgs/Layer7.png";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import appleIcon from "../assets/imgs/mac-os.png";
+import { useEffect } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 

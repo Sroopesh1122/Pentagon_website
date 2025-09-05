@@ -12,7 +12,7 @@ gsap.registerPlugin(ScrollToPlugin);
 const menuItems = [
   {
     key: "Home",
-    label: "Home",
+    label: "HOME",
     path: "/",
   },
   {
@@ -21,26 +21,31 @@ const menuItems = [
     path: "/about",
   },
   {
+    key: "meetTeam",
+    label: "MEET THE TEAM",
+    path: "/meet-the-team",
+  },
+  {
     key: "courses",
-    label: "Our Unified Programs",
+    label: "Our UNIFIED PROGRAMS",
     path: "/courses",
   },
   {
     key: "branches",
-    label: "Branches",
-    path: "/#development-centers", // Updated to use hash navigation
+    label: "BRANCHES",
+    path: "/#development-centers",
   },
 ];
 
 const menuItemsLink = [
   {
     key: "LMS",
-    label: "LMS Portal",
+    label: "LMS PORTAL",
     path: "https://online.pentagonspace.in",
   },
   {
     key: "Student",
-    label: "Student Portal",
+    label: "STUDENT PORTAL",
     path: "https://students.pentagonspace.in",
   },
 ];
@@ -54,15 +59,25 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const handleBranchesClick = () => {
-    // If we're already on home page, scroll to section
     if (window.location.pathname === "/") {
       const section = document.getElementById("development-centers");
       if (section) {
         section.scrollIntoView({ behavior: "smooth" });
       }
     } else {
-      // Otherwise navigate to home page with hash
       navigate("/#development-centers");
+    }
+    setNavbarOpen(false);
+  };
+
+  const handleNavigation = (item) => {
+    if (item.key === "courses") {
+      sessionStorage.setItem("showRocketAnimation", "yes");
+      navigate(item.path);
+    } else if (item.key === "branches") {
+      handleBranchesClick();
+    } else {
+      navigate(item.path);
     }
     setNavbarOpen(false);
   };
@@ -81,16 +96,7 @@ const Navbar = () => {
             <div
               className="underline-nav cursor-pointer"
               key={item.key}
-              onClick={() => {
-                if (item.key === "courses") {
-                  sessionStorage.setItem("showRocketAnimation", "yes");
-                  window.location.href = item.path;
-                } else if (item.key === "branches") {
-                  handleBranchesClick();
-                } else {
-                  window.location.href = item.path;
-                }
-              }}
+              onClick={() => handleNavigation(item)}
             >
               {item.label}
             </div>
@@ -131,16 +137,7 @@ const Navbar = () => {
               <div
                 className="text-lg font-medium py-2 px-4 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer"
                 key={item.key}
-                onClick={() => {
-                  if (item.key === "courses") {
-                    sessionStorage.setItem("showRocketAnimation", "yes");
-                    window.location.href = item.path;
-                  } else if (item.key === "branches") {
-                    handleBranchesClick();
-                  } else {
-                    window.location.href = item.path;
-                  }
-                }}
+                onClick={() => handleNavigation(item)}
               >
                 {item.label}
               </div>

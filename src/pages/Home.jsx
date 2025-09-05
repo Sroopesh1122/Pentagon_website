@@ -185,21 +185,21 @@ const Home = () => {
       <section id="course-section" className="w-full mt-[50px] md:mt-[120px] ">
         <article className="flex w-full justify-center items-center pt-[30px]">
           <button className="px-[30px] flex gap-[1px] justify-center items-center cursor-pointer rounded-sm py-1   text-2xl">
-            <div className="border border-black font-extrabold px-2 py-1">
+            <div className=" font-extrabold px-2 py-1">
               COURSES
             </div>
-            <div className="w-[43px] h-[43px] bg-black flex justify-center -rotate-90 items-center">
+            {/* <div className="w-[43px] h-[43px] bg-black flex justify-center -rotate-90 items-center">
               <img
                 src={triangle}
                 className="w-[25px] h-[25px] rotate-0"
                 alt=""
               />
-            </div>
+            </div> */}
           </button>
         </article>
 
         <article className="w-full relative mt-[-10px]   flex justify-center items-center">
-          <button
+          {/* <button
             onClick={() => setPromoOpen(true)}
             className="px-[30px] into-btn absolute bottom-[30px] left-[2%]  md:left-[10%] lg:left-[25%] flex gap-[1px] justify-center items-center cursor-pointer rounded-sm py-1 text-2xl"
           >
@@ -211,9 +211,9 @@ const Home = () => {
               <span style={{ "--i": 1 }}></span>
               <FaPlay size={23} className="text-red-500 " />
             </div>
-          </button>
+          </button> */}
 
-          <div className="relative w-[400px] h-[400px] flex justify-center items-center mt-[50px]">
+          <div className="relative w-[400px] h-[400px] flex justify-center items-center mt-[00px]">
             {/* Outer Circle: Top and Bottom */}
             <div className="orbit orbit-outer">
               <div className="orbit-content">
@@ -317,7 +317,7 @@ const Home = () => {
 <section id="development-centers">
   <DevelopmentCenters />
 </section>
-      <TeamMembers />
+   
 
       <Elearning/>
 

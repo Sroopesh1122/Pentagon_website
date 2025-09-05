@@ -1,4 +1,4 @@
-import SoftwareTestingPage from "./pages/SoftwareTesting";
+// App.js
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AppWrapper from "./components/AppWrapper";
@@ -6,14 +6,15 @@ import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import { LuLoaderCircle } from "react-icons/lu";
 import AboutUs from "./pages/AboutUs";
+import MeetTeam from "./pages/MeetTeam"; // Add this import
 import Courses from "./pages/courses";
-
 import JavaFullStack from "./pages/JavaFullStack";
 import PythonFullStack from "./pages/PythonFullStack";
 import MernFullStack from "./pages/MernFullStack";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import ContactUs from "./pages/ContactUs";
+import SoftwareTestingCourse from "./components/software-testing-course";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -55,15 +56,15 @@ function App() {
         <Route path="/" element={<AppWrapper />}>
           <Route index element={<Home />} />
           <Route path="about" element={<AboutUs />} />
+          <Route path="meet-the-team" element={<MeetTeam />} />
           <Route path="courses" element={<Courses />} />
           <Route path="java-full-stack" element={<JavaFullStack />} />
           <Route path="python-full-stack" element={<PythonFullStack />} />
           <Route path="mern-full-stack" element={<MernFullStack />} />
-          <Route path="software-testing" element={<SoftwareTestingPage />} />
+          <Route path="software-testing" element={<SoftwareTestingCourse/>} />
           <Route path="terms" element={<TermsAndConditions/>} />
           <Route path="privacy" element={<PrivacyPolicy/>} />
           <Route path="contact" element={<ContactUs/>} />
-          
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

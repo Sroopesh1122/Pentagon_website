@@ -1,35 +1,22 @@
-import React, { useEffect, useRef } from "react";
-import ReactPlayer from "react-player";
+// VedioPlayer.jsx
+import React, { forwardRef } from 'react';
 
-const VedioPlayer = ({ url }) => {
-  const playerRef = useRef(null);
-
-  useEffect(() => {
-    return () => {
-      if (playerRef.current) {
-        setTimeout(() => {
-          const internal = playerRef.current.getInternalPlayer?.();
-          if (internal?.pause) {
-            internal.pause();
-          }
-        }, 0);
-      }
-    };
-  }, []);
-
+const VedioPlayer = forwardRef(({ url }, ref) => {
   return (
-    <section className="w-full h-full">
-      <ReactPlayer
-        ref={playerRef}
-        controls={false}
-        url={url}
-        width="100%"
-        height="100%"
-        playing
-        loop={true}
-      />
-    </section>
+    <div className="w-full h-full flex items-center justify-center">
+      <video 
+        ref={ref}
+        className="w-full h-full object-contain"
+        controls
+        autoPlay
+      >
+        <source src={url} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
   );
-};
+});
+
+VedioPlayer.displayName = 'VedioPlayer';
 
 export default VedioPlayer;

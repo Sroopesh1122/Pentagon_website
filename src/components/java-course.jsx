@@ -166,9 +166,9 @@ const JavaCourse = () => {
                 </h3>
                 <div className="grid grid-cols-4 gap-4">
                   {[
-                    { src: "https://pentagonspace.in/assets/images/course_logo/java/pngwing.com%20(1).png", alt: "Java" },
-                    { src: "https://pentagonspace.in/assets/images/course_logo/java/Spring%20Boot.png", alt: "Spring Boot" },
-                    { src: "https://pentagonspace.in/assets/images/course_logo/java/React%20JS.png", alt: "React" },
+                    { src: "https://www.codewithus.com/images/topic_page/icons/java.webp", alt: "Java" },
+                    { src: "https://tse2.mm.bing.net/th/id/OIP.vyMp89svBdH47FavLVhQAwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3", alt: "Spring Boot" },
+                    { src: "https://imgcdn.stablediffusionweb.com/2024/6/27/81ed524f-af70-4939-bf2a-1dc523e84bd3.jpg", alt: "React" },
                     { src: "https://pentagonspace.in/assets/images/course_logo/java/SQL.png", alt: "SQL" },
                     { src: "https://pentagonspace.in/assets/images/course_logo/java/Dockers%20logo.png", alt: "Docker" },
                     { src: "https://pentagonspace.in/assets/images/course_logo/java/Git%20&%20Git%20Hub.png", alt: "Git" },

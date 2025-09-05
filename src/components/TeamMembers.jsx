@@ -1,15 +1,15 @@
 import React from "react";
 import { GoArrowUpRight } from "react-icons/go";
-import SurajSir from "../assets/imgs/teamMembers/SurajSir.png";
-import SharathSir from "../assets/imgs/teamMembers/Sharath sir.png";
-import JohnSir from "../assets/imgs/teamMembers/John Milton.jpg";
-import KarthikSir from "../assets/imgs/teamMembers/karthik.jpg";
-import NihalSir from "../assets/imgs/teamMembers/Nihal.jpg";
-import PunithSir from "../assets/imgs/teamMembers/Punith.jpg";
-import ShivKumarSir from "../assets/imgs/teamMembers/Shivakumar.jpg";
-import HarishSir from "../assets/imgs/teamMembers/Harish.jpg";
-import KiranSir from "../assets/imgs/teamMembers/Kiran.jpg";
-import PavanSir from "../assets/imgs/teamMembers/Pavan.jpg";
+// import SurajSir from "../assets/imgs/teamMembers/SurajSir.png";
+// import SharathSir from "../assets/imgs/teamMembers/Sharath sir.png";
+// import JohnSir from "../assets/imgs/teamMembers/John Milton.jpg";
+// import KarthikSir from "../assets/imgs/teamMembers/Karthik.png";
+// import NihalSir from "../assets/imgs/teamMembers/Nihal.jpg";
+// import PunithSir from "../assets/imgs/teamMembers/Punith.jpg";
+// import ShivKumarSir from "../assets/imgs/teamMembers/Shivakumar.jpg";
+// import HarishSir from "../assets/imgs/teamMembers/Harish.jpg";
+// import KiranSir from "../assets/imgs/teamMembers/Kiran.jpg";
+// import PavanSir from "../assets/imgs/teamMembers/Pavan.jpg";
 import { FaArrowCircleRight, FaArrowCircleLeft } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
@@ -180,4 +180,4 @@ const TeamMembers = () => {
   );
 };
 
-export default TeamMembers;
+export default TeamMembers; 
