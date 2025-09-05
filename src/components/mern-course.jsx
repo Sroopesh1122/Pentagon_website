@@ -215,7 +215,7 @@ const MernCourse = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA Section
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-r from-red-500 to-red-600 rounded-xl shadow-xl p-8 md:p-10">
@@ -247,7 +247,7 @@ const MernCourse = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };

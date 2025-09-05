@@ -115,7 +115,7 @@ const MeetTheTeam = () => {
   const [hoveredTrainer, setHoveredTrainer] = useState(null);
 
   return (
-    <div className="font-sans bg-white min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+    <div className="font-sans bg-white font-secondary min-h-screen py-8 px-4 sm:px-6 lg:px-8">
       {/* Leadership Spotlight Header */}
       <div className="max-w-6xl mx-auto mb-8">
         <h1 className="text-3xl font-bold text-center text-gray-800">Leadership Spotlight</h1>

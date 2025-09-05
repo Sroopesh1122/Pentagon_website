@@ -222,12 +222,12 @@ const Courses = () => {
             </div>
 
             <div className="mt-16 text-center">
-              <p className="text-gray-600 mb-6">
+             {/* <p className="text-gray-600 mb-6">
                 Not sure which course is right for you?
               </p>
-              <button className="px-6 py-3 bg-red-500 hover:bg-red-600 text-white font-medium rounded-lg shadow-md transition-colors duration-300">
+               <button className="px-6 py-3 bg-red-500 hover:bg-red-600 text-white font-medium rounded-lg shadow-md transition-colors duration-300">
                 Talk to Our Counselor
-              </button>
+              </button> */}
             </div>
           </div>
         </section>
