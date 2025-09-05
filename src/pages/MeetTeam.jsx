@@ -96,13 +96,13 @@ const MeetTheTeam = () => {
       image: pavan,
       about: "Expert in front-end and MERN stack development with a strong focus on modern web technologies and user-centric design. Experienced in delivering hands-on training to build industry-ready skills aligned with evolving trends."
     },
-    {
-      id: 10,
-      name: "Mr. Shiva Kumar M G",
-      position: "Senior Technical Trainer-Software Testing",
-      image: nagaraj, // Note: Using nagaraj image as placeholder
-      about: "With 4+ years of experience in software testing and a passion for teaching, I specialize in creating effective testing strategies and helping students build real-world applications."
-    },
+    // {
+    //   id: 10,
+    //   name: "Mr. Shiva Kumar M G",
+    //   position: "Senior Technical Trainer-Software Testing",
+    //   image: nagaraj, // Note: Using nagaraj image as placeholder
+    //   about: "With 4+ years of experience in software testing and a passion for teaching, I specialize in creating effective testing strategies and helping students build real-world applications."
+    // },
     {
       id:11,
       name: "Mr. Shashank Talawar",
