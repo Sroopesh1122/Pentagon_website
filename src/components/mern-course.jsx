@@ -183,16 +183,16 @@ const MernCourse = () => {
                 </h3>
                 <div className="grid grid-cols-4 gap-4">
                   {[
-                    { src: "https://pentagonspace.in/assets/images/course_logo/mern/Mongo%20DB.png", alt: "MongoDB" },
-                    { src: "https://pentagonspace.in/assets/images/course_logo/mern/Express%20JS.png", alt: "Express.js" },
-                    { src: "https://pentagonspace.in/assets/images/course_logo/mern/React%20JS.png", alt: "React" },
-                    { src: "https://pentagonspace.in/assets/images/course_logo/mern/Node%20JS.png", alt: "Node.js" },
-                    { src: "https://pentagonspace.in/assets/images/course_logo/mern/Mongoose%20Logo.png", alt: "Mongoose" },
-                    { src: "https://pentagonspace.in/assets/images/course_logo/mern/Figma%20Logo.png", alt: "Figma" },
-                    { src: "https://pentagonspace.in/assets/images/course_logo/mern/HTML%20&%20CSS.png", alt: "HTML & CSS" },
-                    { src: "https://pentagonspace.in/assets/images/course_logo/mern/Bootsrap.png", alt: "Bootstrap" },
-                    { src: "https://pentagonspace.in/assets/images/course_logo/mern/JavaScript.png", alt: "JavaScript" },
-                    { src: "https://pentagonspace.in/assets/images/course_logo/mern/Git%20&%20Git%20Hub.png", alt: "Git & GitHub" },
+                    { src: "https://tse3.mm.bing.net/th/id/OIP.gxnlmlCna-dYR4ybMuao-AHaD4?rs=1&pid=ImgDetMain&o=7&rm=3", alt: "MongoDB" },
+                    { src: "https://proteconsol.com/static/media/express.9a7f9c8a05061cd3e765.png", alt: "Express.js" },
+                    { src: "https://imgcdn.stablediffusionweb.com/2024/6/27/81ed524f-af70-4939-bf2a-1dc523e84bd3.jpg", alt: "React" },
+                    { src: "https://e7.pngegg.com/pngimages/306/37/png-clipart-node-js-logo-node-js-javascript-web-application-express-js-computer-software-others-miscellaneous-text.png", alt: "Node.js" },
+                    { src: "https://logowik.com/content/uploads/images/mongoose9464.logowik.com.webp", alt: "Mongoose" },
+                    { src: "https://tse1.mm.bing.net/th/id/OIP.0R4ieZlVQ1OoMQf4C8XwGgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3", alt: "Figma" },
+                    { src: "https://tse4.mm.bing.net/th/id/OIP.K0bK7OGYkF9YXIc608wZ0gHaE8?rs=1&pid=ImgDetMain&o=7&rm=3ssss", alt: "HTML & CSS" },
+                    { src: "https://thafd.bing.com/th/id/OIP.dphNSJAWu3jIw0fmYbuOlAHaHa?w=176&h=180&c=7&r=0&o=7&pid=1.7&rm=3", alt: "Bootstrap" },
+                    { src: "https://www.freepnglogos.com/uploads/javascript-png/javascript-logo-hq-png-1.png", alt: "JavaScript" },
+                    { src: "https://lsn235711.github.io/images/logos/githubtext.png", alt: "Git & GitHub" },
                   ].map((tech, index) => (
                     <div
                       key={index}

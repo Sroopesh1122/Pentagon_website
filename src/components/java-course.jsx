@@ -169,14 +169,15 @@ const JavaCourse = () => {
                     { src: "https://www.codewithus.com/images/topic_page/icons/java.webp", alt: "Java" },
                     { src: "https://tse2.mm.bing.net/th/id/OIP.vyMp89svBdH47FavLVhQAwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3", alt: "Spring Boot" },
                     { src: "https://imgcdn.stablediffusionweb.com/2024/6/27/81ed524f-af70-4939-bf2a-1dc523e84bd3.jpg", alt: "React" },
-                    { src: "https://pentagonspace.in/assets/images/course_logo/java/SQL.png", alt: "SQL" },
-                    { src: "https://pentagonspace.in/assets/images/course_logo/java/Dockers%20logo.png", alt: "Docker" },
-                    { src: "https://pentagonspace.in/assets/images/course_logo/java/Git%20&%20Git%20Hub.png", alt: "Git" },
-                    { src: "https://pentagonspace.in/assets/images/course_logo/mern/HTML%20&%20CSS.png", alt: "Html Css" },
-                    { src: "https://pentagonspace.in/assets/images/course_logo/mern/Bootsrap.png", alt: "Bootstrap" },
-                    { src: "https://pentagonspace.in/assets/images/course_logo/java/JavaScript.png", alt: "JavaScript" },
+                    { src: "https://www.kindpng.com/picc/m/282-2827461_my-sql-logo-png-mysql-transparent-png.png", alt: "SQL" },
+                    { src: "https://logos-world.net/wp-content/uploads/2021/02/Docker-Symbol.png", alt: "Docker" },
+                    { src: "https://lsn235711.github.io/images/logos/githubtext.png", alt: "Git" },
+                    { src: "https://tse4.mm.bing.net/th/id/OIP.K0bK7OGYkF9YXIc608wZ0gHaE8?rs=1&pid=ImgDetMain&o=7&rm=3ssss", alt: "Html Css" },
+                    { src: "https://thafd.bing.com/th/id/OIP.dphNSJAWu3jIw0fmYbuOlAHaHa?w=176&h=180&c=7&r=0&o=7&pid=1.7&rm=3", alt: "Bootstrap" },
+                    { src: "https://www.freepnglogos.com/uploads/javascript-png/javascript-logo-hq-png-1.png", alt: "JavaScript" },
                     { src: "https://www.wscubetech.com/blog/wp-content/uploads/2024/06/jira-1024x695.webp", alt: "Jira" },
-                    { src: "https://pentagonspace.in/assets/images/course_logo/software/Maven%20Logo.png", alt: "Maven" },
+                    { src: "https://www.svgrepo.com/download/354051/maven.svg", alt: "Maven" },
+                     { src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-TB9d5YXwtKhv4NWbpeTBVveYvcxu9gMJng&s", alt: "Postman" },
                   ].map((tech, index) => (
                     <div key={index} className="flex flex-col items-center p-2 bg-gray-50 rounded-lg hover:shadow-md transition">
                       <img

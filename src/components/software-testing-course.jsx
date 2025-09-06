@@ -3,13 +3,13 @@ import testingLogo from "../assets/imgs/TESTING.png";
 
 const SoftwareTestingCourse = () => {
   const tools = [
-    { name: "Manual Testing", url: "https://pentagonspace.in/assets/images/course_logo/software/Manual%20Testing.png" },
-    { name: "Selenium", url: "https://pentagonspace.in/assets/images/course_logo/software/Selenium.png" },
-    { name: "Java", url: "https://pentagonspace.in/assets/images/course_logo/java/Java.png" },
+    { name: "Manual Testing", url: "https://tse2.mm.bing.net/th/id/OIP.k-J3Bsqzerf5u8lZtn3ucwHaHx?rs=1&pid=ImgDetMain&o=7&rm=3" },
+    { name: "Selenium", url: "https://tse2.mm.bing.net/th/id/OIP.KkGDFPFW4U3iNQh0r6H7RAHaHL?w=1080&h=1048&rs=1&pid=ImgDetMain&o=7&rm=3 " },
+    { name: "Java", url: "https://tse3.mm.bing.net/th/id/OIP.N96rU1S6dBavSyDWvwqB5wHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" },
     { name: "JIRA", url: "https://www.wscubetech.com/blog/wp-content/uploads/2024/06/jira-1024x695.webp" },
-    { name: "Maven", url: "https://pentagonspace.in/assets/images/course_logo/software/Maven%20Logo.png" },
-    { name: "Git & GitHub", url: "https://pentagonspace.in/assets/images/course_logo/software/Git%20&%20Git%20Hub.png" },
-    { name: "SQL", url: "https://pentagonspace.in/assets/images/course_logo/software/SQL.png" },
+    { name: "Maven", url: "https://www.svgrepo.com/download/354051/maven.svg" },
+    { name: "Git & GitHub", url: "https://lsn235711.github.io/images/logos/githubtext.png" },
+    { name: "SQL", url: "https://www.kindpng.com/picc/m/282-2827461_my-sql-logo-png-mysql-transparent-png.png" },
     { name: "Postman", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-TB9d5YXwtKhv4NWbpeTBVveYvcxu9gMJng&s" }
   ];
 

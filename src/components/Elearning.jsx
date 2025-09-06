@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { FaPlay, FaSearch, FaCertificate, FaArrowRight, FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { FiExternalLink } from 'react-icons/fi';
 import { eLearningGallery } from '../utils/Gallery';
@@ -6,26 +6,37 @@ import { eLearningGallery } from '../utils/Gallery';
 const Elearning = () => {
   const [showGallery, setShowGallery] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  
+  // Refs for touch handling
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
   const galleryImages = [
     ...eLearningGallery  
   ];
 
+  // Check if device is mobile on component mount and resize
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkIsMobile);
+    };
+  }, []);
+
   const navigateGallery = useCallback((direction) => {
-    if (isTransitioning) return;
-    
-    setIsTransitioning(true);
-    
     if (direction === 'prev') {
       setCurrentImageIndex(prev => (prev === 0 ? galleryImages.length - 1 : prev - 1));
     } else {
       setCurrentImageIndex(prev => (prev === galleryImages.length - 1 ? 0 : prev + 1));
     }
-    
-    // Small delay to allow the transition to complete
-    setTimeout(() => setIsTransitioning(false), 300);
-  }, [isTransitioning, galleryImages.length]);
+  }, [galleryImages.length]);
 
   const openGallery = (index = 0) => {
     setCurrentImageIndex(index);
@@ -39,8 +50,38 @@ const Elearning = () => {
   }, []);
 
   const goToImage = (index) => {
-    if (isTransitioning || index === currentImageIndex) return;
+    if (index === currentImageIndex) return;
     setCurrentImageIndex(index);
+  };
+
+  // Improved touch handlers for mobile swipe
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    
+    const diffX = touchStartX.current - touchEndX.current;
+    const minSwipeDistance = 50; // Minimum distance for a swipe to register
+    
+    if (Math.abs(diffX) > minSwipeDistance) {
+      if (diffX > 0) {
+        // Swipe left - next image
+        navigateGallery('next');
+      } else {
+        // Swipe right - previous image
+        navigateGallery('prev');
+      }
+    }
+    
+    // Reset values
+    touchStartX.current = 0;
+    touchEndX.current = 0;
   };
 
   // Keyboard navigation handler
@@ -118,7 +159,7 @@ const Elearning = () => {
         </div>
       </section>
 
-      {/* Enhanced Gallery Modal */}
+      {/* Enhanced Gallery Modal with mobile-specific changes */}
       {showGallery && (
         <div 
           className="fixed inset-0 bg-black/95 backdrop-blur-lg z-50 flex items-center justify-center p-4"
@@ -139,24 +180,45 @@ const Elearning = () => {
               </button>
             </div>
             
-            {/* Main image container */}
-            <div className="relative flex-1 flex items-center justify-center overflow-hidden">
-              <div className="w-full h-full flex items-center justify-center">
+            {/* Main image container with improved touch handlers */}
+            <div 
+              className="relative flex-1 flex items-center justify-center overflow-hidden"
+              onTouchStart={isMobile ? handleTouchStart : undefined}
+              onTouchMove={isMobile ? handleTouchMove : undefined}
+              onTouchEnd={isMobile ? handleTouchEnd : undefined}
+            >
+              <div className="w-full h-full flex items-center justify-center p-0">
                 <img
                   src={galleryImages[currentImageIndex]}
                   alt={`Gallery image ${currentImageIndex + 1}`}
-                  className="max-w-full max-h-[80vh] object-contain transition-transform duration-300 ease-in-out"
-                  style={{ transform: isTransitioning ? 'scale(0.98)' : 'scale(1)' }}
+                  className={`transition-opacity duration-300 ease-in-out ${
+                    isMobile 
+                      ? 'w-full h-full object-contain' 
+                      : 'max-w-full max-h-[80vh] object-contain'
+                  }`}
+                  key={currentImageIndex}
+                  style={{ 
+                    WebkitTouchCallout: 'none',
+                    WebkitUserSelect: 'none',
+                    KhtmlUserSelect: 'none',
+                    MozUserSelect: 'none',
+                    msUserSelect: 'none',
+                    userSelect: 'none'
+                  }}
                 />
               </div>
               
-              {/* Navigation buttons */}
+              {/* Navigation buttons - positioned differently for mobile */}
               <button
                 onClick={(e) => {
                   e.stopPropagation();
                   navigateGallery('prev');
                 }}
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-4 rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
+                className={`absolute bg-black/50 hover:bg-black/70 text-white p-4 rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm ${
+                  isMobile 
+                    ? 'bottom-4 left-4 top-auto z-20' 
+                    : 'left-4 top-1/2 -translate-y-1/2 z-20'
+                }`}
                 aria-label="Previous image"
               >
                 <FaChevronLeft className="text-2xl md:text-3xl" />
@@ -166,15 +228,19 @@ const Elearning = () => {
                   e.stopPropagation();
                   navigateGallery('next');
                 }}
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-4 rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
+                className={`absolute bg-black/50 hover:bg-black/70 text-white p-4 rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm ${
+                  isMobile 
+                    ? 'bottom-4 right-4 top-auto z-20' 
+                    : 'right-4 top-1/2 -translate-y-1/2 z-20'
+                }`}
                 aria-label="Next image"
               >
                 <FaChevronRight className="text-2xl md:text-3xl" />
               </button>
             </div>
             
-            {/* Thumbnail navigation */}
-            {galleryImages.length > 1 && (
+            {/* Thumbnail navigation - hidden on mobile for better UX */}
+            {galleryImages.length > 1 && !isMobile && (
               <div className="mt-4 px-2 overflow-x-auto py-3">
                 <div className="flex space-x-3 justify-center">
                   {galleryImages.map((img, index) => (
@@ -192,6 +258,24 @@ const Elearning = () => {
                     </button>
                   ))}
                 </div>
+              </div>
+            )}
+            
+            {/* Mobile indicator dots */}
+            {isMobile && galleryImages.length > 1 && (
+              <div className="flex justify-center space-x-2 mt-4 pb-4 z-10">
+                {galleryImages.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => goToImage(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                      currentImageIndex === index 
+                        ? 'bg-red-500 scale-125' 
+                        : 'bg-white/50 hover:bg-white/70'
+                    }`}
+                    aria-label={`View image ${index + 1}`}
+                  />
+                ))}
               </div>
             )}
           </div>
