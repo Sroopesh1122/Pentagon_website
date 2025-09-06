@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaTimes } from 'react-icons/fa';
+import React, { useState, useEffect, useCallback } from 'react';
+import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import Vijaynagar from "../images/Vijaynagaroffice.png";
 import Btm from "../images/BTMOffice.png";
 import { btmGallery, vijaynagarGallery } from '../utils/Gallery';
@@ -8,6 +8,7 @@ const DevelopmentCenters = () => {
   const [selectedCenter, setSelectedCenter] = useState(null);
   const [showGallery, setShowGallery] = useState(false);
   const [selectedImgIndex, setSelectedImgIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const centers = [
     {
@@ -30,6 +31,41 @@ const DevelopmentCenters = () => {
     }
   ];
 
+  // Navigation function
+  const navigateGallery = useCallback((direction) => {
+    if (isTransitioning || !selectedCenter) return;
+    
+    setIsTransitioning(true);
+    
+    if (direction === 'prev') {
+      setSelectedImgIndex(prev => (prev === 0 ? selectedCenter.gallery.length - 1 : prev - 1));
+    } else {
+      setSelectedImgIndex(prev => (prev === selectedCenter.gallery.length - 1 ? 0 : prev + 1));
+    }
+    
+    // Small delay to allow the transition to complete
+    setTimeout(() => setIsTransitioning(false), 300);
+  }, [isTransitioning, selectedCenter]);
+
+  // Keyboard navigation handler
+  const handleKeyDown = useCallback((e) => {
+    if (!showGallery || !selectedCenter) return;
+    
+    if (e.key === 'Escape') {
+      closeGallery();
+    } else if (e.key === 'ArrowRight') {
+      navigateGallery('next');
+    } else if (e.key === 'ArrowLeft') {
+      navigateGallery('prev');
+    }
+  }, [showGallery, selectedCenter, navigateGallery]);
+
+  // Add keyboard event listener
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [handleKeyDown]);
+
   const openGallery = (center) => {
     setSelectedCenter(center);
     setSelectedImgIndex(0);
@@ -37,9 +73,14 @@ const DevelopmentCenters = () => {
     document.body.style.overflow = 'hidden';
   };
 
-  const closeGallery = () => {
+  const closeGallery = useCallback(() => {
     setShowGallery(false);
     document.body.style.overflow = 'auto';
+  }, []);
+
+  const goToImage = (index) => {
+    if (isTransitioning || index === selectedImgIndex || !selectedCenter) return;
+    setSelectedImgIndex(index);
   };
 
   return (
@@ -100,41 +141,82 @@ const DevelopmentCenters = () => {
         </div>
       </div>
 
-      {/* Gallery Modal - unchanged */}
+      {/* Enhanced Gallery Modal */}
       {showGallery && selectedCenter && (
-        <div className="fixed inset-0 bg-black/75 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="relative max-w-4xl w-full bg-white rounded-lg overflow-hidden">
-            <button
-              onClick={closeGallery}
-              className="absolute top-4 right-4 cursor-pointer z-10 bg-black text-white rounded-full p-2 hover:bg-gray-800 transition-colors"
-            >
-              <FaTimes className="h-6 w-6" />
-            </button>
-
-            <div className="h-[70vh] overflow-hidden">
-              <img
-                className="w-full h-full object-contain"
-                src={selectedCenter.gallery[selectedImgIndex]}
-                alt={selectedCenter.name}
-              />
-            </div>
-
-            <div className="p-4 bg-gray-100">
-              <h3 className="text-xl font-bold text-gray-900">{selectedCenter.name} Gallery</h3>
-              <div className="flex space-x-2 mt-2 overflow-x-auto py-2">
-                {selectedCenter.gallery.map((img, index) => (
-                  <img
-                    key={index}
-                    src={img}
-                    alt={`${selectedCenter.name} ${index + 1}`}
-                    className={`h-20 w-20 object-cover rounded cursor-pointer hover:opacity-80 ${
-                      index === selectedImgIndex ? 'ring-2 ring-red-500' : ''
-                    }`}
-                    onClick={() => setSelectedImgIndex(index)}
-                  />
-                ))}
+        <div 
+          className="fixed inset-0 bg-black/95 backdrop-blur-lg z-50 flex items-center justify-center p-4"
+          onClick={(e) => e.target === e.currentTarget && closeGallery()}
+        >
+          <div className="relative w-full h-full max-w-7xl max-h-screen flex flex-col">
+            {/* Header with counter and close button */}
+            <div className="flex justify-between items-center text-white mb-4 px-2 z-10">
+              <div className="text-lg font-medium bg-black/30 px-3 py-1 rounded-lg">
+                {selectedImgIndex + 1} / {selectedCenter.gallery.length}
               </div>
+              <button
+                onClick={closeGallery}
+                className="p-3 rounded-full hover:bg-white/10 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50"
+                aria-label="Close gallery"
+              >
+                <FaTimes className="text-2xl" />
+              </button>
             </div>
+            
+            {/* Main image container */}
+            <div className="relative flex-1 flex items-center justify-center overflow-hidden">
+              <div className="w-full h-full flex items-center justify-center">
+                <img
+                  src={selectedCenter.gallery[selectedImgIndex]}
+                  alt={`${selectedCenter.name} gallery image ${selectedImgIndex + 1}`}
+                  className="max-w-full max-h-[80vh] object-contain transition-transform duration-300 ease-in-out"
+                  style={{ transform: isTransitioning ? 'scale(0.98)' : 'scale(1)' }}
+                />
+              </div>
+              
+              {/* Navigation buttons */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigateGallery('prev');
+                }}
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-4 rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
+                aria-label="Previous image"
+              >
+                <FaChevronLeft className="text-2xl md:text-3xl" />
+              </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigateGallery('next');
+                }}
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-4 rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
+                aria-label="Next image"
+              >
+                <FaChevronRight className="text-2xl md:text-3xl" />
+              </button>
+            </div>
+            
+            {/* Thumbnail navigation */}
+            {selectedCenter.gallery.length > 1 && (
+              <div className="mt-4 px-2 overflow-x-auto py-3">
+                <div className="flex space-x-3 justify-center">
+                  {selectedCenter.gallery.map((img, index) => (
+                    <button
+                      key={index}
+                      onClick={() => goToImage(index)}
+                      className={`flex-shrink-0 w-20 h-20 rounded-md overflow-hidden border-2 transition-all duration-200 ${selectedImgIndex === index ? 'border-red-500 ring-2 ring-red-300 ring-opacity-50' : 'border-transparent hover:border-white/70'} focus:outline-none focus:ring-2 focus:ring-white/50`}
+                      aria-label={`View image ${index + 1}`}
+                    >
+                      <img
+                        src={img}
+                        alt={`${selectedCenter.name} thumbnail ${index + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       )}

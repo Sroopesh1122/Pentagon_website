@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import qoute from "../assets/imgs/quote.png";
@@ -9,29 +9,20 @@ import ReactPlayer from "react-player";
 import { FaPlay } from "react-icons/fa";
 import { IoCloseSharp } from "react-icons/io5";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
- 
 
 const studentImagesObj = import.meta.glob('..//assets/imgs/testimonials/*.{jpg,jpeg,png,svg}', { eager: true });
-
-
-const studentImages = Object.keys(studentImagesObj)
+const studentImages = Object.keys(studentImagesObj);
 
 const Testimonial = () => {
   const [openModal, setOpenModal] = useState(false);
-  const [selectedVedio, setSelectedVedio] = useState(null);
-
-  const [vedioLoading,setVedioLoading] = useState(true)
-
-  const handleVedioSelect = (url) => {
-    setSelectedVedio(url);
-  };
-
+  const [selectedVideo, setSelectedVideo] = useState(null);
+  const [videoLoading, setVideoLoading] = useState(true);
+  const playerRef = useRef(null);
 
   const getImageByName = (name) => {
-    const imgUrl = studentImages.find((img)=>img.includes(name));
-    return imgUrl ? studentImagesObj[imgUrl].default  : "https://cdn-icons-png.flaticon.com/512/4537/4537019.png";  
+    const imgUrl = studentImages.find((img) => img.includes(name));
+    return imgUrl ? studentImagesObj[imgUrl].default : "https://cdn-icons-png.flaticon.com/512/4537/4537019.png";
   };
-
 
   const TESTIMONIAL_DETAILS = [
     {
@@ -251,24 +242,48 @@ const Testimonial = () => {
       Image: getImageByName("Subahan"),
     }
   ];
-  
-  
 
+  const handleVideoSelect = (url) => {
+    setSelectedVideo(url);
+    setOpenModal(true);
+    setVideoLoading(true);
+  };
+
+  const handleVideoClose = () => {
+    setOpenModal(false);
+    setSelectedVideo(null);
+    setVideoLoading(true);
+    
+    // Force stop the video by resetting the player
+    if (playerRef.current) {
+      playerRef.current.seekTo(0);
+    }
+  };
+
+  // Close modal with Escape key
   useEffect(() => {
-    document.body.addEventListener("click", () => {
-      setOpenModal(false);
-      setSelectedVedio(null);
-      setVedioLoading(true)
-    });
-  });
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && openModal) {
+        handleVideoClose();
+      }
+    };
 
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [openModal]);
 
-  const handleVedioClose = ()=>{
-    setOpenModal(false)
-    setSelectedVedio(null);
-      setVedioLoading(true)
-  }
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (openModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
 
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [openModal]);
 
   return (
     <>
@@ -279,25 +294,34 @@ const Testimonial = () => {
               onClick={(e) => {
                 e.stopPropagation();
               }}
-              className="absolute top-0 left-[50%] -translate-x-[50%] w-[95%] md:w-[500px] mx-auto  z-[10]   bg-black p-3 rounded-2xl"
+              className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
             >
-              <div className="w-full h-[400px] rounded-2xl relative">    
-                <span className="text-[1.3rem] text-white absolute right-2 top-2 cursor-pointer z-[10]" onClick={handleVedioClose}><IoCloseSharp/></span>
-                {
-                  vedioLoading && <span className="absolute top-[50%] translate-y-[-50%] text-white left-[50%] -translate-x-[50%] z-[10]">
-                        <AiOutlineLoading3Quarters size={25} className="text-white animate-spin duration-500 ease-in-out"/>
-                  </span>
-                }
-               
-                <ReactPlayer
-                  controls={false}
-                  url={selectedVedio}
-                  width={"100%"}
-                  height={"100%"}
-                  playing
-                  onStart={()=>setVedioLoading(false)}
-                  onBufferEnd={()=>setVedioLoading(false)}
-                />
+              <div className="relative w-full max-w-2xl bg-black p-4 rounded-lg">
+                <button
+                  onClick={handleVideoClose}
+                  className="absolute -top-10 right-0 text-white text-3xl z-10 hover:text-red-500 transition-colors"
+                >
+                  <IoCloseSharp />
+                </button>
+                
+                <div className="w-full h-[400px] rounded-lg relative">    
+                  {videoLoading && (
+                    <div className="absolute inset-0 flex items-center justify-center z-5">
+                      <AiOutlineLoading3Quarters size={25} className="text-white animate-spin" />
+                    </div>
+                  )}
+                  
+                  <ReactPlayer
+                    ref={playerRef}
+                    url={selectedVideo}
+                    width="100%"
+                    height="100%"
+                    playing
+                    controls
+                    onReady={() => setVideoLoading(false)}
+                    onError={() => setVideoLoading(false)}
+                  />
+                </div>
               </div>
             </section>
           )}
@@ -344,7 +368,7 @@ const Testimonial = () => {
                       <div className="testimonial-block_one-content relative">
                         <img
                           src={testimonial.Image}
-                          className="w-[100px] h-[100px] rounded-full shadow-sm  "
+                          className="w-[100px] h-[100px] rounded-full shadow-sm"
                           alt=""
                         />
 
@@ -361,11 +385,7 @@ const Testimonial = () => {
                         </span>
 
                         <span
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setOpenModal(true);
-                            setSelectedVedio(testimonial.VideoLink)
-                          }}
+                          onClick={() => handleVideoSelect(testimonial.VideoLink)}
                           className="testimonial-play cursor-pointer absolute bottom-[60px] flex justify-center items-center right-[30px] w-[70px] h-[70px] shadow border-2 border-red-200 rounded-full"
                         >
                           <FaPlay size={20} className="text-red-500"/>
@@ -388,7 +408,6 @@ const Testimonial = () => {
             </Swiper>
 
             {/* Custom nav + pagination */}
-
             <div className="w-full flex justify-center items-center">
               <div className="three-item_carousel-pagination ms-[100px]"></div>
             </div>

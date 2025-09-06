@@ -1,16 +1,31 @@
-import React, { useState } from 'react';
-import { FaPlay, FaSearch, FaCertificate, FaArrowRight } from 'react-icons/fa';
+import React, { useState, useEffect, useCallback } from 'react';
+import { FaPlay, FaSearch, FaCertificate, FaArrowRight, FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { FiExternalLink } from 'react-icons/fi';
 import { eLearningGallery } from '../utils/Gallery';
 
 const Elearning = () => {
   const [showGallery, setShowGallery] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
-  // Sample gallery images
   const galleryImages = [
-   ...eLearningGallery  
+    ...eLearningGallery  
   ];
+
+  const navigateGallery = useCallback((direction) => {
+    if (isTransitioning) return;
+    
+    setIsTransitioning(true);
+    
+    if (direction === 'prev') {
+      setCurrentImageIndex(prev => (prev === 0 ? galleryImages.length - 1 : prev - 1));
+    } else {
+      setCurrentImageIndex(prev => (prev === galleryImages.length - 1 ? 0 : prev + 1));
+    }
+    
+    // Small delay to allow the transition to complete
+    setTimeout(() => setIsTransitioning(false), 300);
+  }, [isTransitioning, galleryImages.length]);
 
   const openGallery = (index = 0) => {
     setCurrentImageIndex(index);
@@ -18,18 +33,34 @@ const Elearning = () => {
     document.body.style.overflow = 'hidden';
   };
 
-  const closeGallery = () => {
+  const closeGallery = useCallback(() => {
     setShowGallery(false);
     document.body.style.overflow = 'auto';
+  }, []);
+
+  const goToImage = (index) => {
+    if (isTransitioning || index === currentImageIndex) return;
+    setCurrentImageIndex(index);
   };
 
-  const navigateGallery = (direction) => {
-    if (direction === 'prev') {
-      setCurrentImageIndex(prev => (prev === 0 ? galleryImages.length - 1 : prev - 1));
-    } else {
-      setCurrentImageIndex(prev => (prev === galleryImages.length - 1 ? 0 : prev + 1));
+  // Keyboard navigation handler
+  const handleKeyDown = useCallback((e) => {
+    if (!showGallery) return;
+    
+    if (e.key === 'Escape') {
+      closeGallery();
+    } else if (e.key === 'ArrowRight') {
+      navigateGallery('next');
+    } else if (e.key === 'ArrowLeft') {
+      navigateGallery('prev');
     }
-  };
+  }, [showGallery, navigateGallery, closeGallery]);
+
+  // Add keyboard event listener
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [handleKeyDown]);
 
   return (
     <div className="relative mt-32">
@@ -43,9 +74,6 @@ const Elearning = () => {
             Access world-class courses from industry experts anytime, anywhere
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            {/* <button className="bg-red-500 hover:bg-red-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2">
-              Explore Programs <FaArrowRight />
-            </button> */}
             <button 
               onClick={() => openGallery()}
               className="bg-white cursor-pointer text-black hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
@@ -90,45 +118,82 @@ const Elearning = () => {
         </div>
       </section>
 
-      {/* Gallery Modal */}
+      {/* Enhanced Gallery Modal */}
       {showGallery && (
-        <div className="fixed inset-0 bg-black/75 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <button
-            onClick={closeGallery}
-            className="absolute cursor-pointer top-4 right-4 text-white text-4xl z-10 hover:text-red-500 transition-colors"
-          >
-            &times;
-          </button>
-          
-          <div className="relative max-w-4xl w-full">
-            <img
-              src={galleryImages[currentImageIndex]}
-              alt="Gallery"
-              className="w-full max-h-[80vh] object-contain"
-            />
-            
-            <button
-              onClick={() => navigateGallery('prev')}
-              className="absolute left-4 cursor-pointer top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-red-500 transition-colors"
-            >
-              &larr;
-            </button>
-            <button
-              onClick={() => navigateGallery('next')}
-              className="absolute cursor-pointer right-4 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-red-500 transition-colors"
-            >
-              &rarr;
-            </button>
-          </div>
-          
-          <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
-            {galleryImages.map((_, index) => (
+        <div 
+          className="fixed inset-0 bg-black/95 backdrop-blur-lg z-50 flex items-center justify-center p-4"
+          onClick={(e) => e.target === e.currentTarget && closeGallery()}
+        >
+          <div className="relative w-full h-full max-w-7xl max-h-screen flex flex-col">
+            {/* Header with counter and close button */}
+            <div className="flex justify-between items-center text-white mb-4 px-2 z-10">
+              <div className="text-lg font-medium bg-black/30 px-3 py-1 rounded-lg">
+                {currentImageIndex + 1} / {galleryImages.length}
+              </div>
               <button
-                key={index}
-                onClick={() => setCurrentImageIndex(index)}
-                className={`w-3 h-3 cursor-pointer rounded-full ${currentImageIndex === index ? 'bg-red-500' : 'bg-gray-500'} hover:bg-red-500 transition-colors`}
-              />
-            ))}
+                onClick={closeGallery}
+                className="p-3 rounded-full hover:bg-white/10 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50"
+                aria-label="Close gallery"
+              >
+                <FaTimes className="text-2xl" />
+              </button>
+            </div>
+            
+            {/* Main image container */}
+            <div className="relative flex-1 flex items-center justify-center overflow-hidden">
+              <div className="w-full h-full flex items-center justify-center">
+                <img
+                  src={galleryImages[currentImageIndex]}
+                  alt={`Gallery image ${currentImageIndex + 1}`}
+                  className="max-w-full max-h-[80vh] object-contain transition-transform duration-300 ease-in-out"
+                  style={{ transform: isTransitioning ? 'scale(0.98)' : 'scale(1)' }}
+                />
+              </div>
+              
+              {/* Navigation buttons */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigateGallery('prev');
+                }}
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-4 rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
+                aria-label="Previous image"
+              >
+                <FaChevronLeft className="text-2xl md:text-3xl" />
+              </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigateGallery('next');
+                }}
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-4 rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
+                aria-label="Next image"
+              >
+                <FaChevronRight className="text-2xl md:text-3xl" />
+              </button>
+            </div>
+            
+            {/* Thumbnail navigation */}
+            {galleryImages.length > 1 && (
+              <div className="mt-4 px-2 overflow-x-auto py-3">
+                <div className="flex space-x-3 justify-center">
+                  {galleryImages.map((img, index) => (
+                    <button
+                      key={index}
+                      onClick={() => goToImage(index)}
+                      className={`flex-shrink-0 w-20 h-20 rounded-md overflow-hidden border-2 transition-all duration-200 ${currentImageIndex === index ? 'border-red-500 ring-2 ring-red-300 ring-opacity-50' : 'border-transparent hover:border-white/70'} focus:outline-none focus:ring-2 focus:ring-white/50`}
+                      aria-label={`View image ${index + 1}`}
+                    >
+                      <img
+                        src={img}
+                        alt={`Thumbnail ${index + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       )}
