@@ -21,6 +21,7 @@ import TeamMembers from "../components/TeamMembers";
 import PageFooter from "../components/PageFooter";
 import DevelopmentCenters from "../components/DevelopmentCenters";
 import Elearning from "../components/Elearning";
+import { useLocation } from 'react-router-dom';
 
 const Home = () => {
   const TEXT = [
@@ -29,6 +30,49 @@ const Home = () => {
     { label: "LIVE", path: "/live" },
     { label: "DEEP", path: "/deep" },
   ];
+  const location = useLocation();
+
+  useEffect(() => {
+    // Handle state-based navigation (preferred method)
+    if (location.state?.scrollTo === 'development-centers') {
+      const scrollToSection = () => {
+        const section = document.getElementById('development-centers');
+        if (section) {
+          const offsetTop = section.offsetTop - 80; // Adjust for navbar height
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }
+        // Clear the state to prevent scrolling on subsequent renders
+        window.history.replaceState({}, '', window.location.pathname);
+      };
+
+      // Small timeout to ensure the page is fully rendered
+      const timer = setTimeout(scrollToSection, 100);
+      return () => clearTimeout(timer);
+    }
+
+    // Also handle hash navigation as fallback
+    if (location.hash === '#development-centers') {
+      const scrollToSection = () => {
+        const section = document.getElementById('development-centers');
+        if (section) {
+          const offsetTop = section.offsetTop - 80;
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+          window.history.replaceState({}, '', window.location.pathname);
+        }
+      };
+
+      const timer = setTimeout(scrollToSection, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [location]);
+
+
 
   const COURSES = [
     {

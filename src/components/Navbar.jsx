@@ -4,10 +4,6 @@ import Brand from "./Brand";
 import { Link, useNavigate } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
-import { gsap } from "gsap";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-
-gsap.registerPlugin(ScrollToPlugin);
 
 const menuItems = [
   {
@@ -33,7 +29,8 @@ const menuItems = [
   {
     key: "branches",
     label: "BRANCHES",
-    path: "/#development-centers",
+    path: "/",
+    scrollTo: "development-centers"
   },
 ];
 
@@ -60,12 +57,18 @@ const Navbar = () => {
 
   const handleBranchesClick = () => {
     if (window.location.pathname === "/") {
+      // Already on home page, scroll to branches
       const section = document.getElementById("development-centers");
       if (section) {
-        section.scrollIntoView({ behavior: "smooth" });
+        const offsetTop = section.offsetTop - 80; // Adjust for navbar height
+        window.scrollTo({
+          top: offsetTop,
+          behavior: "smooth"
+        });
       }
     } else {
-      navigate("/#development-centers");
+      // Navigate to home with state to scroll to branches
+      navigate("/", { state: { scrollTo: "development-centers" } });
     }
     setNavbarOpen(false);
   };
